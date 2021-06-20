@@ -1,0 +1,8 @@
+# Install requirements
+pyside6~=6.0.0
+pyparsing~=2.4.0
+
+# Test requirements
+pytest~=6.2 # test
+pytest-xdist~=2.3 # test
+pytest-cov~=2.12 # test
