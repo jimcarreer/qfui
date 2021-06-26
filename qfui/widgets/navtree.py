@@ -10,107 +10,106 @@ from qfui.models.sections import Section
 from qfui.qfparser.blueprints import Blueprint
 
 
-class NavigationItemMetaClass(ABCMeta, type(QAbstractItemModel)):
-    pass
+class NavigationNode(ABC):
 
-
-class NavigationItem(ABC, metaclass=NavigationItemMetaClass):
-
-    def __init__(self, parent: Optional[NavigationItem] = None, children: Optional[List[NavigationItem]] = None):
-        super().__init__()
+    def __init__(self, parent: Optional[NavigationNode], children: List[NavigationNode]):
         self._parent = parent
-        self._children = children or []
-
-    @property
-    def child_items(self) -> List[NavigationItem]:
-        return self._children
-
-    @property
-    def parent_item(self) -> Optional[NavigationItem]:
-        return self._parent
-
-    def __repr__(self):
-        return f'{self.tree_label}({super().__repr__()})'
+        self._children = children
 
     @property
     @abstractmethod
-    def tree_label(self) -> str:
+    def label(self) -> str:
         pass
 
-    def index(self, row: int, column: int, parent: QModelIndex = ...) -> QModelIndex:
-        print(f'Asking for index for {row}, {column}, {parent} in {self.tree_label}')
-        if not self.hasIndex(row, column, parent):
-            print(f'Return empty {self.tree_label}')
-            return QModelIndex()
-        parent: NavigationItem = self if not parent.isValid() else parent.internalPointer()
-        if row < len(parent.child_items):
-            print(f'Return index {self.tree_label}: {parent.child_items[row]}')
-            return self.createIndex(row, column, parent.child_items[row])
-        print(f'Return final empty {self.tree_label}')
-        return QModelIndex()
-
-    def rowCount(self, parent: QModelIndex) -> int:
-        return len(self.child_items)
-
-    def columnCount(self, parent: QModelIndex) -> int:
-        return 1
-
-    def parent(self, index: QModelIndex) -> QModelIndex:
-        print(f'Asking for parent for {index} in {self.tree_label}')
-        if not index.isValid():
-            return QModelIndex()
-        child: NavigationItem = index.internalPointer()
-        parent = child.parent_item
-        if parent is None:
-            return QModelIndex()
-        return self.createIndex(index.row(), 0, parent)
-
-    def data(self, index: QModelIndex, role: int) -> Qt.QVariant:
-        print(f'Asking for data for {index} in {self.tree_label}')
-        if not index.isValid() or role != Qt.DisplayRole:
-            return None
-        return self._children[index.row()].tree_label
-
-
-class NavigationTree(NavigationItem, QAbstractItemModel):
+    @property
+    def child_nodes(self) -> List[NavigationNode]:
+        return self._children
 
     @property
-    def tree_label(self) -> str:
-        return 'ROOT'
+    def parent_node(self) -> Optional[NavigationNode]:
+        return self._parent
+
+    @property
+    def index_in_parent(self) -> int:
+        if not self.parent_node:
+            return 0
+        return self.parent_node.child_nodes.index(self)
+
+
+class SectionNode(NavigationNode):
+
+    def __init__(self, parent: NavigationNode, section: Section):
+        super().__init__(parent, [])
+        self._section = section
+
+    @property
+    def label(self) -> str:
+        return f'{self._section.mode}: (label : {self._section.label})'
+
+
+class BlueprintNode(NavigationNode):
+
+    def __init__(self, parent: NavigationNode, blueprint: Blueprint):
+        children = [SectionNode(self, s) for s in blueprint.sections]
+        super().__init__(parent, children)
+        self._blueprint = blueprint
+
+    @property
+    def label(self) -> str:
+        return os.path.basename(self._blueprint.filepath)
+
+
+class RootNode(NavigationNode):
+
+    def label(self) -> str:
+        return self._label
 
     def __init__(self, blueprints: List[Blueprint]):
-        children = [BlueprintItem(self, bp) for bp in blueprints]
+        children = [BlueprintNode(self, b) for b in blueprints]
         super().__init__(None, children)
+        self._label = '<ROOT>'
+
+
+class NavigationTree(QAbstractItemModel):
+
+    def __init__(self, blueprints: List[Blueprint]):
+        super().__init__()
+        self._root = RootNode(blueprints)
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int):
         if orientation == Qt.Horizontal and role == Qt.DisplayRole:
             return ['Filename']
         return None
 
+    def columnCount(self, _: QModelIndex) -> int:
+        return 1
 
-class BlueprintItem(NavigationItem, QAbstractItemModel):
+    def data(self, index: QModelIndex, role: int) -> Qt.QVariant:
+        if not index.isValid() or role != Qt.DisplayRole:
+            return None
+        item: NavigationNode = index.internalPointer()
+        return item.label
 
-    @property
-    def tree_label(self) -> str:
-        return os.path.basename(self._bp.filepath)
+    def index(self, row: int, column: int, parent: QModelIndex) -> QModelIndex:
+        if not self.hasIndex(row, column, parent):
+            return QModelIndex()
+        parent: NavigationNode = self._root if not parent.isValid() else parent.internalPointer()
+        child = parent.child_nodes[row] if row < len(parent.child_nodes) else None
+        if not child:
+            return QModelIndex()
+        return self.createIndex(row, column, child)
 
-    def __init__(self, parent: NavigationTree, blueprint: Blueprint):
-        children = [SectionItem(self, s) for s in blueprint.sections]
-        super().__init__(parent, children)
-        self._bp = blueprint
+    def parent(self, index: QModelIndex) -> QObject:
+        if not index.isValid():
+            return QModelIndex()
+        child: NavigationNode = index.internalPointer()
+        parent: NavigationNode = child.parent_node
+        if parent == self._root:
+            return QModelIndex()
+        return self.createIndex(parent.index_in_parent, 0, parent)
 
-
-class SectionItem(NavigationItem, QAbstractItemModel):
-
-    @property
-    def tree_label(self) -> str:
-        return self._section.label
-
-    def __init__(self, parent: BlueprintItem, section: Section):
-        super().__init__()
-        self._parent = parent
-        self._section = section
-
-
-class LayerItem(QAbstractItemModel):
-    pass
+    def rowCount(self, parent: QModelIndex) -> int:
+        if parent.column() > 0:
+            return 0
+        parent: NavigationNode = self._root if not parent.isValid() else parent.internalPointer()
+        return len(parent.child_nodes)
