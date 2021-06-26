@@ -12,6 +12,14 @@ class Blueprint:
         self._filepath = filepath
         self._sections: List[Section] = []
 
+    @property
+    def filepath(self):
+        return self._filepath
+
+    @property
+    def sections(self):
+        return self._sections
+
     def load(self):
         with open(self._filepath, "r") as fh:
             reader = csv.reader(fh, dialect="excel")

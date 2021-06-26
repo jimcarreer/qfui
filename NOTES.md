@@ -73,6 +73,15 @@ Layer properties
 * Start?
 * Grid
 
+# Parser Context
+
+The QFParser module should use a logger and log adapter to trace issues
+with the file being parsed as debugs/infos/errors/warns. Specifically 
+line no / cell position / char position will be important.  This should just
+be extra log context updated whenever appropriate, possibly at the start of 
+for loops that iterate lines and reset at the end of the relevant loop
+https://docs.python.org/3/howto/logging-cookbook.html#adding-contextual-information-to-your-logging-output
+
 # DF Hack and Lua Notes
 https://github.com/DFHack/dfhack/blob/develop/library/lua/utils.lua
 * utils.invert takes a list and creates a dictionary:

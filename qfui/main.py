@@ -5,9 +5,12 @@ from typing import Optional, Generator, Tuple, List
 from PySide6.QtCore import QRectF
 from PySide6.QtGui import QPainter, QMouseEvent, QPen, Qt, QBrush, QColor
 from PySide6.QtWidgets import (
-    QGraphicsItem, QApplication, QGraphicsView, QGraphicsScene, QStyleOptionGraphicsItem, QWidget, QMainWindow
+    QGraphicsItem, QApplication, QGraphicsView, QGraphicsScene, QStyleOptionGraphicsItem, QWidget, QMainWindow,
+    QTreeView
 )
 
+from qfui.qfparser.blueprints import Blueprint
+from qfui.widgets.navtree import NavigationTree
 
 CELL_PX_SIZE = 20
 CELL_BORDER_PX_SIZE = 1
@@ -159,9 +162,27 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == '__main__':
+
+    import sys
+
+    bp = Blueprint(filepath='./tests/data/dreamfort.csv')
+    bp.load()
+    app = QApplication(sys.argv)
+
+    model = NavigationTree([bp])
+
+    view = QTreeView()
+    view.setModel(model)
+    view.setWindowTitle('NavTreeTest')
+    view.show()
+    sys.exit(app.exec_())
+
+"""
+if __name__ == '__main__':
     app = QApplication(sys.argv)
     mainWin = MainWindow()
     availableGeometry = mainWin.screen().availableGeometry()
     mainWin.resize(availableGeometry.width() / 3, availableGeometry.height() / 2)
     mainWin.show()
     sys.exit(app.exec_())
+"""
