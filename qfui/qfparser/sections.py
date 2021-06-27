@@ -12,7 +12,7 @@ from pyparsing import (
 
 from qfui.models.enums import Markers, SectionModes
 from qfui.models.layers import RawLayer
-from qfui.models.sections import RawSection, GridSection, Section
+from qfui.models.sections import RawSection, GridSection, SectionStart
 from qfui.qfparser import actions
 from qfui.qfparser.cells import DesignationCellParser, CellParser, UnprocessedCellParser
 from qfui.qfparser.layers import GridLayerParser
@@ -97,6 +97,12 @@ class SectionParser(ABC):
             kwargs.update(node[1] if len(node) == 2 else {"comment": node[0]})
         if "comment" in kwargs and not kwargs["comment"]:
             kwargs.pop("comment")
+        start = {
+            "x": kwargs.pop("start_x", None),
+            "y": kwargs.pop("start_y", None),
+            "comment": kwargs.pop("start_comment", None)
+        }
+        kwargs['start'] = None if all(v is None for v in start.values()) else SectionStart(**start)
         sec_cls = cls.__MODE_TO_SECTION__.get(kwargs["mode"], RawSection)
         section = sec_cls(**kwargs)
         return cls.parser_for(section)

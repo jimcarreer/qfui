@@ -3,9 +3,7 @@
     "mode": "notes",
     "label": "help",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": null,
+    "start": null,
     "message": null,
     "comment": "run me for the dreamfort walkthrough",
     "layer": {
@@ -110,9 +108,7 @@
     "mode": "notes",
     "label": "checklist",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": null,
+    "start": null,
     "message": null,
     "comment": "command checklist",
     "layer": {
@@ -326,9 +322,11 @@
     "mode": "meta",
     "label": "dig_all_underground",
     "hidden": true,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs on industry level",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs on industry level"
+    },
     "message": null,
     "comment": "dig industry, services, guildhall, suites, and apartments levels",
     "layer": {
@@ -382,9 +380,7 @@
     "mode": "ignore",
     "label": "3",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": null,
+    "start": null,
     "message": null,
     "comment": null,
     "layer": {
@@ -501,9 +497,7 @@
     "mode": "notes",
     "label": "surface_help",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": null,
+    "start": null,
     "message": null,
     "comment": null,
     "layer": {
@@ -629,9 +623,11 @@
     "mode": "meta",
     "label": "perimeter",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": "Run quickfort undo on this blueprint to clean up.",
     "comment": "show the eventual perimeter of the surface fort; useful for location scouting",
     "layer": {
@@ -652,9 +648,11 @@
     "mode": "meta",
     "label": "surface1",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": "Once the central stairs is mined out deeply enough, you should start digging the industry level in a non-aquifer rock layer. You'll need the boulders from the digging to make blocks.\nIf your wagon is within the fort perimeter, deconstruct it to get it out of the way.\nEnqueue manager orders for /surface3 to get a head start on building required materials.\nOnce the marked trees are all chopped down (if any), continue with /surface2.",
     "comment": "clear trees and set up pastures",
     "layer": {
@@ -681,9 +679,11 @@
     "mode": "meta",
     "label": "surface2",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": "Once the channels are dug out and the marked trees are cleared, continue with /surface3.",
     "comment": "set up starting workshops/stockpiles, channel miasma vents, and clear more trees",
     "layer": {
@@ -713,9 +713,11 @@
     "mode": "meta",
     "label": "surface3",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": "Once the walls and floors have been constructed, continue with /surface4.",
     "comment": "Cover vents and protect the central stairs.",
     "layer": {
@@ -736,9 +738,11 @@
     "mode": "meta",
     "label": "surface4",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": "Remember to enqueue manager orders for this blueprint.\nOnce the walls and floors have been constructed, continue with /surface5. Be sure to check one z-level above the surface to ensure the roof segment above the future barracks has been finished.",
     "comment": "build walls and flooring to support upcoming buildings and furniture",
     "layer": {
@@ -759,9 +763,11 @@
     "mode": "meta",
     "label": "surface5",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": "Remember to enqueue manager orders for this blueprint.\nDisassemble the temporary trade depot in the pasture once the new one is constructed (and no merchants are using the old one).\nOnce the marked trees are cleared and at least the beehives and weapon rack have been constructed, continue with /surface6.",
     "comment": "build gates, furniture, and trade stockpile/depot",
     "layer": {
@@ -788,9 +794,11 @@
     "mode": "meta",
     "label": "surface6",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": "Remember to enqueue manager orders for this blueprint.\nContinue with /surface7 sometime after the walls are completed and any marked trees are chopped down, whenever you have enough dwarves to build the roof without starving other important construction tasks.",
     "comment": "configure hives and barracks, build traps and remaining walls/floors",
     "layer": {
@@ -820,9 +828,11 @@
     "mode": "meta",
     "label": "surface7",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs (on ground level)",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs (on ground level)"
+    },
     "message": "Remember to enqueue manager orders for this blueprint. For extra security, you can run /surface8 at any time to extend the trap corridors.",
     "comment": "build roof",
     "layer": {
@@ -846,9 +856,11 @@
     "mode": "meta",
     "label": "surface8",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": "Remember to enqueue manager orders for this blueprint.",
     "comment": "build extended trap corridors",
     "layer": {
@@ -869,9 +881,11 @@
     "mode": "dig",
     "label": "central_stairs",
     "hidden": true,
-    "start_x": 2,
-    "start_y": 2,
-    "start_comment": null,
+    "start": {
+      "x": 2,
+      "y": 2,
+      "comment": null
+    },
     "message": null,
     "comment": "spiral stairs that go down 20 levels",
     "layers": [
@@ -1601,9 +1615,11 @@
     "mode": "dig",
     "label": "surface_clear_small",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "clear trees for starting workshops and stockpiles",
     "layers": [
@@ -3633,9 +3649,11 @@
     "mode": "zone",
     "label": "surface_zones",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": "Remember to assign your dogs to the pasture surrounding the central stairs and your grazing animals to the large pasture.\nFeel free to assign an unimportant animal to the pasture in the main entranceway to use as bait during sieges.",
     "comment": " pastures and training areas",
     "layers": [
@@ -6078,9 +6096,11 @@
     "mode": "query",
     "label": "surface_name_zones",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": null,
     "layers": [
@@ -6093,9 +6113,11 @@
     "mode": "build",
     "label": "surface_build_start",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": "There is room to the left of the carpenter's workshop to build one more workshop of any type if you need it.",
     "comment": " starting workshops",
     "layers": [
@@ -6158,9 +6180,11 @@
     "mode": "place",
     "label": "surface_place_start",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": "if you haven't already, now is a good time to deconstruct the wagon",
     "comment": " starting stockpiles",
     "layers": [
@@ -6874,9 +6898,11 @@
     "mode": "query",
     "label": "surface_query_start",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "config stockpiles",
     "layers": [
@@ -6946,9 +6972,11 @@
     "mode": "dig",
     "label": "surface_channel",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "channel miasma vents",
     "layers": [
@@ -7162,9 +7190,11 @@
     "mode": "dig",
     "label": "surface_clear",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "clear trees so the farming level can be dug without fear of generating surface holes",
     "layers": [
@@ -14106,9 +14136,11 @@
     "mode": "build",
     "label": "surface_cover_vents",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "cover the miasma vents",
     "layers": [
@@ -14297,9 +14329,11 @@
     "mode": "build",
     "label": "surface_cover_stairs",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "protect the central stairs",
     "layers": [
@@ -14737,9 +14771,11 @@
     "mode": "build",
     "label": "surface_stairs_doors",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": null,
     "layers": [
@@ -14809,9 +14845,11 @@
     "mode": "build",
     "label": "surface_pre_building",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "flooring and anchoring walls for future buildings/doors",
     "layers": [
@@ -15452,9 +15490,11 @@
     "mode": "place",
     "label": "surface_place",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "remaining surface stockpiles",
     "layers": [
@@ -15853,9 +15893,11 @@
     "mode": "build",
     "label": "surface_build",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": "Use autofarm to manage farm crop selection.\nRemember to connect the levers to the gates once they are built.",
     "comment": " gates, barracks, farm area, and trade area",
     "layers": [
@@ -16646,9 +16688,11 @@
     "mode": "query",
     "label": "surface_query",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": "Remember to assign a minecart to the trade goods quantum stockpile.\nFeel free to adjust the configuration of the \"trade goods\" feeder stockpile so it accepts the item types you want to trade away. If those items types are also accepted by other stockpiles, configure those stockpiles to give to the \"trade goods\" stockpile.\nYou might also want to set the \"trade goods quantum\" stockpile to Auto Trade if you have the autotrade DFHack plugin enabled.",
     "comment": null,
     "layers": [
@@ -16697,9 +16741,11 @@
     "mode": "dig",
     "label": "surface_clear_large",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "clear wider area of trees",
     "layers": [
@@ -25393,9 +25439,11 @@
     "mode": "query",
     "label": "surface_query2",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": null,
     "layers": [
@@ -25451,9 +25499,11 @@
     "mode": "build",
     "label": "surface_walls",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "build remaining walls",
     "layers": [
@@ -26475,9 +26525,11 @@
     "mode": "build",
     "label": "surface_floors",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "build remaining flooring",
     "layers": [
@@ -26988,9 +27040,11 @@
     "mode": "build",
     "label": "surface_traps",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": null,
     "layers": [
@@ -27158,9 +27212,11 @@
     "mode": "build",
     "label": "surface_roof",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "lower half of the roof",
     "layers": [
@@ -28812,9 +28868,11 @@
     "mode": "build",
     "label": "surface_roof2",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "upper half of the roof",
     "layers": [
@@ -30753,9 +30811,11 @@
     "mode": "build",
     "label": "surface_corridor",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "trap hallway walls",
     "layers": [
@@ -31529,9 +31589,11 @@
     "mode": "build",
     "label": "surface_corridor_traps",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "barracks, longer trap hallways, and outer levers/gates",
     "layers": [
@@ -31923,9 +31985,11 @@
     "mode": "query",
     "label": "surface_query_corridor",
     "hidden": true,
-    "start_x": 19,
-    "start_y": 19,
-    "start_comment": null,
+    "start": {
+      "x": 19,
+      "y": 19,
+      "comment": null
+    },
     "message": null,
     "comment": "(Remember to connect the levers to the new external trap gates.) configure barracks and name outer levers/gates",
     "layers": [
@@ -31938,9 +32002,7 @@
     "mode": "notes",
     "label": "farming_help",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": null,
+    "start": null,
     "message": null,
     "comment": null,
     "layer": {
@@ -32063,9 +32125,11 @@
     "mode": "dig",
     "label": "farming1",
     "hidden": false,
-    "start_x": 16,
-    "start_y": 18,
-    "start_comment": " central stairs",
+    "start": {
+      "x": 16,
+      "y": 18,
+      "comment": " central stairs"
+    },
     "message": "This would be a good time to queue up manager orders for /farming2. Once the area is dug out, continue with /farming2.",
     "comment": null,
     "layers": [
@@ -35495,9 +35559,11 @@
     "mode": "meta",
     "label": "farming2",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": "Once furniture has been placed, continue with /farming3.",
     "comment": "workshops, stockpiles, and important furniture",
     "layer": {
@@ -35521,9 +35587,11 @@
     "mode": "meta",
     "label": "farming3",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": null,
     "comment": "configure rooms and build farm plots and more furniture",
     "layer": {
@@ -35544,9 +35612,11 @@
     "mode": "meta",
     "label": "farming4",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": null,
     "comment": "configure farm plots and build remaining furniture",
     "layer": {
@@ -35564,9 +35634,11 @@
     "mode": "build",
     "label": "farming_build",
     "hidden": true,
-    "start_x": 16,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 16,
+      "y": 18,
+      "comment": null
+    },
     "message": null,
     "comment": "workshops and important furniture",
     "layers": [
@@ -35692,9 +35764,11 @@
     "mode": "place",
     "label": "farming_place",
     "hidden": true,
-    "start_x": 16,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 16,
+      "y": 18,
+      "comment": null
+    },
     "message": null,
     "comment": "stockpiles",
     "layers": [
@@ -37437,9 +37511,11 @@
     "mode": "query",
     "label": "farming_query_stockpiles",
     "hidden": true,
-    "start_x": 16,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 16,
+      "y": 18,
+      "comment": null
+    },
     "message": "remember to:\n- assign a minecart to the refuse quantum stockpile\n- if the industry level is already built, configure the jugs, pots, and bags stockpiles to take from the \"Goods\" quantum stockpile on the industry level",
     "comment": " config stockpiles",
     "layers": [
@@ -37656,9 +37732,11 @@
     "mode": "query",
     "label": "farming_rooms",
     "hidden": true,
-    "start_x": 16,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 16,
+      "y": 18,
+      "comment": null
+    },
     "message": "Check to ensure the lower office got assigned to your manager and assign the upper office to your bookkeeper (if different from your manager).",
     "comment": " configure rooms",
     "layers": [
@@ -37700,9 +37778,11 @@
     "mode": "build",
     "label": "farming_build2",
     "hidden": true,
-    "start_x": 16,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 16,
+      "y": 18,
+      "comment": null
+    },
     "message": null,
     "comment": "farm plots, remaining furniture, and important doors",
     "layers": [
@@ -38010,9 +38090,11 @@
     "mode": "query",
     "label": "farming_query_plots",
     "hidden": true,
-    "start_x": 16,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 16,
+      "y": 18,
+      "comment": null
+    },
     "message": null,
     "comment": "configure farm plots for seasonal fertilization",
     "layers": [
@@ -38089,9 +38171,11 @@
     "mode": "build",
     "label": "farming_build3",
     "hidden": true,
-    "start_x": 16,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 16,
+      "y": 18,
+      "comment": null
+    },
     "message": null,
     "comment": "remaining doors",
     "layers": [
@@ -38245,9 +38329,7 @@
     "mode": "notes",
     "label": "industry_help",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": null,
+    "start": null,
     "message": null,
     "comment": null,
     "layer": {
@@ -38406,9 +38488,11 @@
     "mode": "dig",
     "label": "industry1",
     "hidden": false,
-    "start_x": 18,
-    "start_y": 18,
-    "start_comment": " central stairs",
+    "start": {
+      "x": 18,
+      "y": 18,
+      "comment": " central stairs"
+    },
     "message": "This would be a good time to queue manager orders for /industry2. Once the area is dug out, continue with /industry2.",
     "comment": null,
     "layers": [
@@ -44886,9 +44970,11 @@
     "mode": "meta",
     "label": "industry2",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": null,
     "comment": "build workshops and stockpiles, configure stockpiles",
     "layer": {
@@ -44909,9 +44995,11 @@
     "mode": "build",
     "label": "industry_build",
     "hidden": true,
-    "start_x": 18,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 18,
+      "y": 18,
+      "comment": null
+    },
     "message": null,
     "comment": null,
     "layers": [
@@ -45184,9 +45272,11 @@
     "mode": "place",
     "label": "industry_place",
     "hidden": true,
-    "start_x": 18,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 18,
+      "y": 18,
+      "comment": null
+    },
     "message": null,
     "comment": null,
     "layers": [
@@ -46565,9 +46655,11 @@
     "mode": "query",
     "label": "industry_query",
     "hidden": true,
-    "start_x": 18,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 18,
+      "y": 18,
+      "comment": null
+    },
     "message": "remember to:\n- assign minecarts to to your quantum stockpile hauling routes\n- if the farming level is already built, give from the \"Goods\" quantum stockpile to the jugs, pots, and bags stockpiles on the farming level\n- if you want to automatically melt goblinite and other low-quality weapons and armor, mark the south-east stockpiles for auto-melt\n- now that your industry is set up, run \"orders import automation\" to automate your fort's basic needs (download automation.json from https://drive.google.com/file/d/17WcN5mK-rnADOm2B_JFpPnByYgkYjxhb/view?usp=sharing and put it in your dfhack-config/orders/ directory)",
     "comment": null,
     "layers": [
@@ -46784,9 +46876,7 @@
     "mode": "notes",
     "label": "services_help",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": null,
+    "start": null,
     "message": null,
     "comment": null,
     "layer": {
@@ -46876,9 +46966,11 @@
     "mode": "dig",
     "label": "services1",
     "hidden": false,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": " central stairs",
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": " central stairs"
+    },
     "message": "This would be a good time to queue manager orders for /services2 and /services3. Once the area is dug out, continue with /services2.",
     "comment": null,
     "layers": [
@@ -52416,9 +52508,11 @@
     "mode": "meta",
     "label": "services2",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": "Once furniture has been placed, continue with /services3.",
     "comment": "dining hall anchors, stockpiles, hospital, garbage dump",
     "layer": {
@@ -52448,9 +52542,11 @@
     "mode": "meta",
     "label": "services3",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": null,
     "comment": "configure dining room, build dining hall and hospital furniture",
     "layer": {
@@ -52471,9 +52567,11 @@
     "mode": "meta",
     "label": "services4",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central stairs",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central stairs"
+    },
     "message": null,
     "comment": "complete jail and build decorative furniture",
     "layer": {
@@ -52494,9 +52592,11 @@
     "mode": "build",
     "label": "services_build",
     "hidden": true,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": null,
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": null
+    },
     "message": null,
     "comment": "build basic hospital and dining room anchor",
     "layers": [
@@ -52678,9 +52778,11 @@
     "mode": "place",
     "label": "services_place",
     "hidden": true,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": null,
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": null
+    },
     "message": null,
     "comment": null,
     "layers": [
@@ -53212,9 +53314,11 @@
     "mode": "zone",
     "label": "services_zones",
     "hidden": true,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": null,
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": null
+    },
     "message": null,
     "comment": "hospital and garbage dump",
     "layers": [
@@ -53928,9 +54032,11 @@
     "mode": "query",
     "label": "services_name_zones",
     "hidden": true,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": null,
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": null
+    },
     "message": null,
     "comment": null,
     "layers": [
@@ -53943,9 +54049,11 @@
     "mode": "query",
     "label": "services_query_stockpiles",
     "hidden": true,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": null,
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": null
+    },
     "message": "Configure the training ammo stockpile to take from the metalworker quantum on the industry level.",
     "comment": " configure stockpiles",
     "layers": [
@@ -53987,9 +54095,11 @@
     "mode": "query",
     "label": "services_query_dining",
     "hidden": false,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": null,
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": null
+    },
     "message": "the bedrooms above the tavern are left unconfigured so you can add them as rented rooms",
     "comment": "set up dining room and barracks",
     "layers": [
@@ -54052,9 +54162,11 @@
     "mode": "build",
     "label": "services_build2",
     "hidden": true,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": null,
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": null
+    },
     "message": null,
     "comment": "build rest of hospital and dining room, doors, prep for jail",
     "layers": [
@@ -54856,9 +54968,11 @@
     "mode": "build",
     "label": "services_build3",
     "hidden": true,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": null,
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": null
+    },
     "message": null,
     "comment": "jail, statues",
     "layers": [
@@ -55180,9 +55294,11 @@
     "mode": "place",
     "label": "services_place_jail",
     "hidden": true,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": null,
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": null
+    },
     "message": null,
     "comment": null,
     "layers": [
@@ -55308,9 +55424,11 @@
     "mode": "query",
     "label": "services_query_jail",
     "hidden": true,
-    "start_x": 23,
-    "start_y": 22,
-    "start_comment": null,
+    "start": {
+      "x": 23,
+      "y": 22,
+      "comment": null
+    },
     "message": null,
     "comment": "set up barracks and jail",
     "layers": [
@@ -55323,9 +55441,7 @@
     "mode": "notes",
     "label": "guildhall_help",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": null,
+    "start": null,
     "message": null,
     "comment": null,
     "layer": {
@@ -55370,9 +55486,11 @@
     "mode": "dig",
     "label": "guildhall1",
     "hidden": false,
-    "start_x": 15,
-    "start_y": 15,
-    "start_comment": " central stairs",
+    "start": {
+      "x": 15,
+      "y": 15,
+      "comment": " central stairs"
+    },
     "message": "This would be a good time to queue manager orders for /guildhall2. Once the area is dug out, continue with /guildhall2.",
     "comment": null,
     "layers": [
@@ -59002,9 +59120,11 @@
     "mode": "build",
     "label": "guildhall2",
     "hidden": false,
-    "start_x": 15,
-    "start_y": 15,
-    "start_comment": " central stairs",
+    "start": {
+      "x": 15,
+      "y": 15,
+      "comment": " central stairs"
+    },
     "message": "Smooth tiles and furnish/declare locations as required.",
     "comment": "build basic furniture",
     "layers": [
@@ -59270,9 +59390,7 @@
     "mode": "notes",
     "label": "beds_help",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": null,
+    "start": null,
     "message": null,
     "comment": null,
     "layer": {
@@ -59341,9 +59459,11 @@
     "mode": "dig",
     "label": "suites1",
     "hidden": false,
-    "start_x": 18,
-    "start_y": 18,
-    "start_comment": " central ramp",
+    "start": {
+      "x": 18,
+      "y": 18,
+      "comment": " central ramp"
+    },
     "message": "This would be a good time to queue manager orders for /suites2. Once the area is dug out, run /suites2",
     "comment": "noble suites",
     "layers": [
@@ -65981,9 +66101,11 @@
     "mode": "build",
     "label": "suites2",
     "hidden": false,
-    "start_x": 18,
-    "start_y": 18,
-    "start_comment": " central ramp",
+    "start": {
+      "x": 18,
+      "y": 18,
+      "comment": " central ramp"
+    },
     "message": "bedrooms are left unconfigured so you can assign them to specific nobles",
     "comment": null,
     "layers": [
@@ -67565,9 +67687,11 @@
     "mode": "meta",
     "label": "apartments1_stack",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central ramp",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central ramp"
+    },
     "message": null,
     "comment": "digs 6 layers of apartments - enough for 200 dwarves",
     "layer": {
@@ -67613,9 +67737,11 @@
     "mode": "dig",
     "label": "apartments1",
     "hidden": false,
-    "start_x": 18,
-    "start_y": 18,
-    "start_comment": " central ramp",
+    "start": {
+      "x": 18,
+      "y": 18,
+      "comment": " central ramp"
+    },
     "message": "This would be a good time to enqueue manager orders for /apartments2 and /apartments3. Once the area is dug out, continue with /apartments2.",
     "comment": "apartment complex",
     "layers": [
@@ -74157,9 +74283,11 @@
     "mode": "build",
     "label": "apartments2",
     "hidden": false,
-    "start_x": 18,
-    "start_y": 18,
-    "start_comment": " central ramp",
+    "start": {
+      "x": 18,
+      "y": 18,
+      "comment": " central ramp"
+    },
     "message": "Once beds have been placed, continue with /apartments3.",
     "comment": "build beds",
     "layers": [
@@ -74425,9 +74553,11 @@
     "mode": "meta",
     "label": "apartments3",
     "hidden": false,
-    "start_x": 0,
-    "start_y": 0,
-    "start_comment": "central ramp",
+    "start": {
+      "x": null,
+      "y": null,
+      "comment": "central ramp"
+    },
     "message": null,
     "comment": "configure rooms and build remaining furniture",
     "layer": {
@@ -74445,9 +74575,11 @@
     "mode": "query",
     "label": "apartments_rooms",
     "hidden": true,
-    "start_x": 18,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 18,
+      "y": 18,
+      "comment": null
+    },
     "message": null,
     "comment": "configure rooms",
     "layers": [
@@ -74713,9 +74845,11 @@
     "mode": "build",
     "label": "apartments_build2",
     "hidden": true,
-    "start_x": 18,
-    "start_y": 18,
-    "start_comment": null,
+    "start": {
+      "x": 18,
+      "y": 18,
+      "comment": null
+    },
     "message": "Coffins should be configured with DFHack burial script",
     "comment": " build remaining furniture",
     "layers": [
