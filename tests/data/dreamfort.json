@@ -923,7 +923,8 @@
             "designation": "u",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 0
       },
       {
         "cells": [
@@ -959,7 +960,8 @@
             "designation": "j",
             "priority": 7
           }
-        ]
+        ],
+        "relative_z": 1
       },
       {
         "cells": [
@@ -995,7 +997,8 @@
             "designation": "u",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 2
       },
       {
         "cells": [
@@ -1031,7 +1034,8 @@
             "designation": "j",
             "priority": 7
           }
-        ]
+        ],
+        "relative_z": 3
       },
       {
         "cells": [
@@ -1067,7 +1071,8 @@
             "designation": "u",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 4
       },
       {
         "cells": [
@@ -1103,7 +1108,8 @@
             "designation": "j",
             "priority": 7
           }
-        ]
+        ],
+        "relative_z": 5
       },
       {
         "cells": [
@@ -1139,7 +1145,8 @@
             "designation": "u",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 6
       },
       {
         "cells": [
@@ -1175,7 +1182,8 @@
             "designation": "j",
             "priority": 7
           }
-        ]
+        ],
+        "relative_z": 7
       },
       {
         "cells": [
@@ -1211,7 +1219,8 @@
             "designation": "u",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 8
       },
       {
         "cells": [
@@ -1247,7 +1256,8 @@
             "designation": "j",
             "priority": 7
           }
-        ]
+        ],
+        "relative_z": 9
       },
       {
         "cells": [
@@ -1283,7 +1293,8 @@
             "designation": "u",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 10
       },
       {
         "cells": [
@@ -1319,7 +1330,8 @@
             "designation": "j",
             "priority": 7
           }
-        ]
+        ],
+        "relative_z": 11
       },
       {
         "cells": [
@@ -1355,7 +1367,8 @@
             "designation": "u",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 12
       },
       {
         "cells": [
@@ -1391,7 +1404,8 @@
             "designation": "j",
             "priority": 7
           }
-        ]
+        ],
+        "relative_z": 13
       },
       {
         "cells": [
@@ -1427,7 +1441,8 @@
             "designation": "u",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 14
       },
       {
         "cells": [
@@ -1463,7 +1478,8 @@
             "designation": "j",
             "priority": 7
           }
-        ]
+        ],
+        "relative_z": 15
       },
       {
         "cells": [
@@ -1499,7 +1515,8 @@
             "designation": "u",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 16
       },
       {
         "cells": [
@@ -1535,7 +1552,8 @@
             "designation": "j",
             "priority": 7
           }
-        ]
+        ],
+        "relative_z": 17
       },
       {
         "cells": [
@@ -1571,7 +1589,8 @@
             "designation": "u",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 18
       },
       {
         "cells": [
@@ -1607,7 +1626,8 @@
             "designation": "j",
             "priority": 7
           }
-        ]
+        ],
+        "relative_z": 19
       }
     ]
   },
@@ -3641,7 +3661,8 @@
             "designation": "t",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -6088,7 +6109,8 @@
             "from_expansion": false,
             "code_text": "n"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -6105,7 +6127,8 @@
     "comment": null,
     "layers": [
       {
-        "cells": []
+        "cells": [],
+        "relative_z": 0
       }
     ]
   },
@@ -6172,7 +6195,8 @@
             "from_expansion": false,
             "code_text": "N"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -6890,7 +6914,8 @@
             "from_expansion": true,
             "code_text": "hl"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -6964,7 +6989,8 @@
             "from_expansion": false,
             "code_text": "nocontainers"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -7182,7 +7208,8 @@
             "designation": "h",
             "priority": 1
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -14128,7 +14155,8 @@
             "designation": "t",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -14321,7 +14349,8 @@
             "from_expansion": false,
             "code_text": "Cf"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -14528,7 +14557,8 @@
             "from_expansion": false,
             "code_text": "Cw"
           }
-        ]
+        ],
+        "relative_z": 0
       },
       {
         "cells": [
@@ -14763,7 +14793,8 @@
             "from_expansion": false,
             "code_text": "Cf"
           }
-        ]
+        ],
+        "relative_z": -1
       }
     ]
   },
@@ -14837,7 +14868,8 @@
             "from_expansion": false,
             "code_text": "d"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -15366,7 +15398,8 @@
             "from_expansion": false,
             "code_text": "Cf"
           }
-        ]
+        ],
+        "relative_z": 0
       },
       {
         "cells": [
@@ -15482,7 +15515,8 @@
             "from_expansion": false,
             "code_text": "Cf"
           }
-        ]
+        ],
+        "relative_z": -1
       }
     ]
   },
@@ -15885,7 +15919,8 @@
             "from_expansion": false,
             "code_text": "c"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -16680,7 +16715,8 @@
             "from_expansion": false,
             "code_text": "gw"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -16733,7 +16769,8 @@
             "from_expansion": false,
             "code_text": "{forbidmasterworkfinishedgoods}{forbidartifactfinishedgoods}"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -25431,7 +25468,8 @@
             "designation": "t",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -25491,7 +25529,8 @@
             "from_expansion": false,
             "code_text": "r&"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -26517,7 +26556,8 @@
             "from_expansion": false,
             "code_text": "Cw"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -27032,7 +27072,8 @@
             "from_expansion": false,
             "code_text": "Cf"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -27204,7 +27245,8 @@
             "from_expansion": false,
             "code_text": "Tc"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -28860,7 +28902,8 @@
             "from_expansion": false,
             "code_text": "Cf"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -30803,7 +30846,8 @@
             "from_expansion": false,
             "code_text": "Cf"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -31213,7 +31257,8 @@
             "from_expansion": false,
             "code_text": "Cw"
           }
-        ]
+        ],
+        "relative_z": 0
       },
       {
         "cells": [
@@ -31581,7 +31626,8 @@
             "from_expansion": false,
             "code_text": "Cf"
           }
-        ]
+        ],
+        "relative_z": -1
       }
     ]
   },
@@ -31977,7 +32023,8 @@
             "from_expansion": false,
             "code_text": "Tc"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -31994,7 +32041,8 @@
     "comment": "(Remember to connect the levers to the new external trap gates.) configure barracks and name outer levers/gates",
     "layers": [
       {
-        "cells": []
+        "cells": [],
+        "relative_z": 0
       }
     ]
   },
@@ -35551,7 +35599,8 @@
             "designation": "z",
             "priority": 2
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -35756,7 +35805,8 @@
             "from_expansion": false,
             "code_text": "trackstopS"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -37503,7 +37553,8 @@
             "from_expansion": false,
             "code_text": "ry"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -37724,7 +37775,8 @@
             "from_expansion": false,
             "code_text": "forbidseeds"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -37770,7 +37822,8 @@
             "from_expansion": false,
             "code_text": "r&d"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -38082,7 +38135,8 @@
             "from_expansion": false,
             "code_text": "d"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -38163,7 +38217,8 @@
             "from_expansion": false,
             "code_text": "s"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -38321,7 +38376,8 @@
             "from_expansion": false,
             "code_text": "d"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -44962,7 +45018,8 @@
             "designation": "d",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -45264,7 +45321,8 @@
             "from_expansion": false,
             "code_text": "ek"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -46647,7 +46705,8 @@
             "from_expansion": true,
             "code_text": "b"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -46868,7 +46927,8 @@
             "from_expansion": false,
             "code_text": "steelbars"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -51416,7 +51476,8 @@
             "designation": "d",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 0
       },
       {
         "cells": [
@@ -52036,7 +52097,8 @@
             "designation": "d",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 1
       },
       {
         "cells": [
@@ -52288,7 +52350,8 @@
             "designation": "d",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 2
       },
       {
         "cells": [
@@ -52500,7 +52563,8 @@
             "designation": "d",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 3
       }
     ]
   },
@@ -52770,7 +52834,8 @@
             "from_expansion": false,
             "code_text": "h"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -53306,7 +53371,8 @@
             "from_expansion": true,
             "code_text": "f"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -54024,7 +54090,8 @@
             "from_expansion": false,
             "code_text": "d"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -54041,7 +54108,8 @@
     "comment": null,
     "layers": [
       {
-        "cells": []
+        "cells": [],
+        "relative_z": 0
       }
     ]
   },
@@ -54087,7 +54155,8 @@
             "from_expansion": false,
             "code_text": "booze"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -54154,7 +54223,8 @@
             "from_expansion": false,
             "code_text": "r+++&"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -54907,7 +54977,8 @@
             "from_expansion": false,
             "code_text": "b"
           }
-        ]
+        ],
+        "relative_z": 0
       },
       {
         "cells": [
@@ -54960,7 +55031,8 @@
             "from_expansion": false,
             "code_text": "d"
           }
-        ]
+        ],
+        "relative_z": 1
       }
     ]
   },
@@ -55286,7 +55358,8 @@
             "from_expansion": false,
             "code_text": "s"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -55416,7 +55489,8 @@
             "from_expansion": true,
             "code_text": "f"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -55433,7 +55507,8 @@
     "comment": "set up barracks and jail",
     "layers": [
       {
-        "cells": []
+        "cells": [],
+        "relative_z": 0
       }
     ]
   },
@@ -59112,7 +59187,8 @@
             "designation": "d",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -59382,7 +59458,8 @@
             "from_expansion": false,
             "code_text": "d"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -66093,7 +66170,8 @@
             "designation": "d",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -67679,7 +67757,8 @@
             "from_expansion": false,
             "code_text": "d"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -74275,7 +74354,8 @@
             "designation": "d",
             "priority": 4
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -74545,7 +74625,8 @@
             "from_expansion": false,
             "code_text": "b"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -74837,7 +74918,8 @@
             "from_expansion": false,
             "code_text": "r-&"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   },
@@ -76759,7 +76841,8 @@
             "from_expansion": false,
             "code_text": "d"
           }
-        ]
+        ],
+        "relative_z": 0
       }
     ]
   }

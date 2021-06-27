@@ -137,11 +137,11 @@ class GridSectionParser(SectionParser):
         layer_raw_lines = []
         for raw_line in raw:
             if raw_line and raw_line[0] in ["#>", "#<"]:
-                section.layers += [self._layer_parser.parse(layer_raw_lines)] if layer_raw_lines else []
+                section.layers += [self._layer_parser.parse(layer_z, layer_raw_lines)] if layer_raw_lines else []
                 layer_z += 1 if raw_line[0] == "#>" else -1
                 layer_raw_lines = []
             elif not raw_line or not raw_line[0].startswith("#"):
                 layer_raw_lines.append(raw_line)
         if layer_raw_lines:
-            section.layers += [self._layer_parser.parse(layer_raw_lines)]
+            section.layers += [self._layer_parser.parse(layer_z, layer_raw_lines)]
         return section

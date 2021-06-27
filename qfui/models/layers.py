@@ -16,6 +16,7 @@ class RawLayer:
 class GridLayer:
 
     cells: List[Cell] = field(default_factory=list)
+    relative_z: int = 0
 
     def __post_init__(self):
         self._look_up = {(c.layer_x, c.layer_y): c for c in self.cells}
