@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import os
-from abc import ABC, ABCMeta, abstractmethod
-from typing import Any, List, Optional
+from abc import ABC, abstractmethod
+from typing import List, Optional
 
 from PySide6.QtCore import QAbstractItemModel, QModelIndex, QObject, Qt
 
@@ -36,15 +36,33 @@ class NavigationNode(ABC):
         return self.parent_node.child_nodes.index(self)
 
 
-class SectionNode(NavigationNode):
+class SectionProperty(NavigationNode):
 
-    def __init__(self, parent: NavigationNode, section: Section):
+    def __init__(self, parent: NavigationNode, name: str, value: str):
         super().__init__(parent, [])
-        self._section = section
+        self._name = name
+        self._value = value
 
     @property
     def label(self) -> str:
-        return f'{self._section.mode}: (label : {self._section.label})'
+        return f"{self._name}: {self._value}"
+
+
+class SectionNode(NavigationNode):
+
+    def __init__(self, parent: NavigationNode, section: Section):
+        self._section = section
+        children = [
+            SectionProperty(self, "mode", self._section.mode.value),
+            SectionProperty(self, "label", self._section.label)
+        ]
+        if self._section.start:
+            children.append(SectionProperty(self, "start", str(self._section.start)))
+        super().__init__(parent, children)
+
+    @property
+    def label(self) -> str:
+        return f"Section #{self.index_in_parent:03d}"
 
 
 class BlueprintNode(NavigationNode):
@@ -67,7 +85,7 @@ class RootNode(NavigationNode):
     def __init__(self, blueprints: List[Blueprint]):
         children = [BlueprintNode(self, b) for b in blueprints]
         super().__init__(None, children)
-        self._label = '<ROOT>'
+        self._label = "<ROOT>"
 
 
 class NavigationTree(QAbstractItemModel):
@@ -78,7 +96,7 @@ class NavigationTree(QAbstractItemModel):
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int):
         if orientation == Qt.Horizontal and role == Qt.DisplayRole:
-            return ['Filename']
+            return ["Filename"]
         return None
 
     def columnCount(self, _: QModelIndex) -> int:
