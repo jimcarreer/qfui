@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import csv
 from qfui.models.enums import SectionModes
-from qfui.qfparser.blueprints import Blueprint
+from qfui.qfparser.importers import Blueprint
 from qfui.models.serialize import SerializingJSONEncoder
 
 with open('data/dreamfort.csv', 'r') as csvfh:
