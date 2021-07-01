@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import List, Optional, Set, Any
 
-from PySide6.QtCore import QAbstractItemModel, QModelIndex, QObject, Qt, QSortFilterProxyModel
+from PySide6.QtCore import QAbstractItemModel, QModelIndex, QObject, Qt, QSortFilterProxyModel, Signal
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QTreeView, QToolBar, QVBoxLayout, QLineEdit, QLabel
 
@@ -249,11 +249,13 @@ class NavigationTree(QAbstractItemModel):
 
 class NavigationWidget(QWidget):
 
+    layerSelected = Signal(GridLayer)
+
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
         self._default_mode_filters = set([m for m in SectionModes if m != SectionModes.IGNORE])
         self._layout = QVBoxLayout(parent=self)
-        self.setMinimumWidth(600)
+        self.setMinimumWidth(450)
         self.setMinimumHeight(150)
         self.setLayout(self._layout)
         self._init_toolbar()
@@ -329,5 +331,4 @@ class NavigationWidget(QWidget):
         index: QModelIndex = selected[0]
         data_model = index.model().data(index, Qt.UserRole)
         if isinstance(data_model, GridLayer):
-            print("TODO: Trigger a signal for layer selected")
-            pass
+            self.layerSelected.emit(data_model)

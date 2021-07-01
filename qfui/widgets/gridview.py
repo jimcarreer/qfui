@@ -9,6 +9,8 @@ from PySide6.QtWidgets import (
     QGraphicsItem, QGraphicsView, QGraphicsScene, QStyleOptionGraphicsItem, QWidget, QMainWindow, QApplication,
 )
 
+from qfui.models.layers import GridLayer
+
 CELL_PX_SIZE = 20
 CELL_BORDER_PX_SIZE = 1
 
@@ -50,7 +52,7 @@ class DesignationCell(QGraphicsItem):
         y = int(math.floor(scene_pos.y() / CELL_PX_SIZE))
 
 
-class QuickFortBlueprint(QGraphicsItem):
+class LayerItem(QGraphicsItem):
     QT_TYPE = QGraphicsItem.UserType + 1
 
     def __init__(self, name: str, cell_width: int, cell_height: int):
@@ -68,7 +70,7 @@ class QuickFortBlueprint(QGraphicsItem):
         ]
 
     def type(self) -> int:
-        return QuickFortBlueprint.QT_TYPE
+        return LayerItem.QT_TYPE
 
     def boundingRect(self) -> QRectF:
         px_width = self._cell_width * CELL_PX_SIZE
@@ -117,24 +119,21 @@ class QuickFortBlueprint(QGraphicsItem):
         self.update()
 
 
-class QuickFortBlueprintViewer(QGraphicsView):
+class LayerViewer(QGraphicsView):
 
     def __init__(self):
         super().__init__()
 
         scene = QGraphicsScene(self)
         scene.setItemIndexMethod(QGraphicsScene.NoIndex)
-        scene.setSceneRect(0, 0, 600, 600)
-        self.setAlignment(Qt.AlignTop | Qt.AlignLeft)
         self.setScene(scene)
         self.setCacheMode(QGraphicsView.CacheBackground)
         self.setRenderHint(QPainter.Antialiasing)
-        self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
+        self.setTransformationAnchor(QGraphicsView.AnchorViewCenter)
         self.setResizeAnchor(QGraphicsView.AnchorViewCenter)
 
-        self.world_matrix = QuickFortBlueprint("test", 144, 144)
-        scene.addItem(self.world_matrix)
-        self.fitInView(self.world_matrix, Qt.KeepAspectRatio)
+        # scene.addItem(self.world_matrix)
+        # self.fitInView(self.world_matrix, Qt.KeepAspectRatio)
 
     def wheelEvent(self, event):
         delta = event.angleDelta().y()
@@ -149,12 +148,19 @@ class QuickFortBlueprintViewer(QGraphicsView):
 
         self.scale(scale_factor, scale_factor)
 
+    def render_grid_layer(self, grid_layer: GridLayer):
+        self.scene().clear()
+        layer_item = LayerItem("test", grid_layer.width, grid_layer.height)
+        for cell in grid_layer.cells:
+            layer_item._cells[cell.layer_x][cell.layer_y] = DesignationCell(cell.layer_x, cell.layer_y)
+        self.scene().addItem(layer_item)
+
 
 if __name__ == '__main__':
     import sys
     app = QApplication(sys.argv)
     mainWin = QMainWindow()
-    mainWin.setCentralWidget(QuickFortBlueprintViewer())
+    mainWin.setCentralWidget(LayerViewer())
     availableGeometry = mainWin.screen().availableGeometry()
     mainWin.resize(availableGeometry.width() / 3, availableGeometry.height() / 2)
     mainWin.show()

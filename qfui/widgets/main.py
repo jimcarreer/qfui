@@ -2,10 +2,12 @@ from typing import Optional
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction
-from PySide6.QtWidgets import QMainWindow, QGraphicsView, QDockWidget, QFileDialog
+from PySide6.QtWidgets import QMainWindow, QDockWidget, QFileDialog
 
+from qfui.models.layers import GridLayer
 from qfui.qfparser.importers import CSVImporter
 from qfui.controller import ProjectController
+from qfui.widgets.gridview import LayerViewer
 from qfui.widgets.navigation import NavigationWidget
 
 
@@ -14,17 +16,24 @@ class MainWindow(QMainWindow):
     def __init__(self, project: Optional[ProjectController] = None):
         super().__init__()
         self._project: Optional[ProjectController] = None
-        # Place holder for GridView
-        self.setCentralWidget(QGraphicsView())
         self.setWindowTitle(self.tr("Quick Fort Designer"))
         self._init_actions()
         self._init_menus()
         self._init_docks()
+        self._init_centrals()
         self.set_project(project)
 
     def set_project(self, project: Optional[ProjectController] = None):
         self._project = project
         self._navigation.widget().set_project(self._project)
+
+    def _render_layer(self, layer: GridLayer):
+        self._layer_view.render_grid_layer(layer)
+
+    def _init_centrals(self):
+        self._layer_view = LayerViewer()
+        self.setCentralWidget(self._layer_view)
+        self._navigation.widget().layerSelected.connect(self._render_layer)
 
     def _import_handler(self):
         if not self._import_dialog.exec_():

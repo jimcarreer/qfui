@@ -23,8 +23,8 @@ class GridLayer:
         self._width = None
         self._height = None
         for x, y in self._look_up:
-            self._width = max(self._width, x) if self._width else x
-            self._height = max(self._height, y) if self._height else y
+            self._width = max(self._width, x + 1) if self._width else x + 1
+            self._height = max(self._height, y + 1) if self._height else y + 1
 
     @property
     def width(self):
