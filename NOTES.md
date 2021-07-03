@@ -108,3 +108,15 @@ Dump function for lua, put in qf common:
         end
       end
     end
+
+Useful link:
+https://www.mediafire.com/folder/u38qsqr1bq6wu/Community_Quickfort_Blueprints_v2
+
+## Ideas
+* Controller use signals connected to widget slots for data changes
+* UI Widgets use signals connected to controller slots for user interaction
+  * This can be circular, IE UI Widget signal causes data change which causes a signal that causes it to update
+  * To prototype this I should probably try something simple like layer visibility
+* Version Modeling (i.e. instead of models/.../ do models/v1/.../ etc)
+* JSON schema validation of deserialized models
+* dev script to generate schema from module

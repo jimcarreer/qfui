@@ -5,6 +5,7 @@ from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QDockWidget, QFileDialog
 
 from qfui.models.layers import GridLayer
+from qfui.models.project import Project
 from qfui.qfparser.importers import CSVImporter
 from qfui.controller import ProjectController
 from qfui.widgets.gridview import LayerViewer
@@ -40,7 +41,7 @@ class MainWindow(QMainWindow):
             return
         file = self._import_dialog.selectedFiles()[0]
         importer = CSVImporter()
-        self.set_project(ProjectController(importer.load(file)))
+        self.set_project(ProjectController(Project(importer.load(file))))
 
     def _init_actions(self):
         self._import_dialog = QFileDialog(self)
