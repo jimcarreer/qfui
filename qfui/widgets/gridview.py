@@ -3,6 +3,7 @@ import math
 
 from typing import Optional, Generator, Tuple, List
 
+import numpy
 from PySide6.QtCore import QRectF
 from PySide6.QtGui import QPainter, QMouseEvent, QPen, Qt, QBrush, QColor
 from PySide6.QtWidgets import (
@@ -151,8 +152,8 @@ class LayerViewer(QGraphicsView):
     def render_grid_layer(self, grid_layer: GridLayer):
         self.scene().clear()
         layer_item = LayerItem("test", grid_layer.width, grid_layer.height)
-        for cell in grid_layer.cells:
-            layer_item._cells[cell.layer_x][cell.layer_y] = DesignationCell(cell.layer_x, cell.layer_y)
+        for (x, y), cell in grid_layer.walk(lambda i, j, c: c is not None):
+            layer_item._cells[x][y] = DesignationCell(x, y)
         self.scene().addItem(layer_item)
 
 

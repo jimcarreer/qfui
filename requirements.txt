@@ -1,6 +1,7 @@
 # Install requirements
 pyside6~=6.0.0
 pyparsing~=2.4.0
+numpy~=1.21.0
 
 # Test requirements
 pytest~=6.2 # test

@@ -9,8 +9,6 @@ from qfui.models.enums import Designations
 @dataclass
 class Cell:
 
-    layer_x: int
-    layer_y: int
     raw_text: Optional[str] = None
     from_expansion: bool = False
 

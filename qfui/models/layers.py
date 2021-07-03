@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Generator, Tuple
+
+import numpy
 
 from qfui.models.cells import Cell
 
@@ -15,21 +17,22 @@ class RawLayer:
 @dataclass
 class GridLayer:
 
-    cells: List[Cell] = field(default_factory=list)
+    height: int = None
+    width: int = None
+    cells: numpy.ndarray = None
     relative_z: int = 0
 
+    def __setattr__(self, key, value):
+        if key in ("height", "width", "cells") and self.__getattribute__(key) is not None:
+            raise AttributeError(f"{key} cannot be set")
+        super(GridLayer, self).__setattr__(key, value)
+
     def __post_init__(self):
-        self._look_up = {(c.layer_x, c.layer_y): c for c in self.cells}
-        self._width = None
-        self._height = None
-        for x, y in self._look_up:
-            self._width = max(self._width, x + 1) if self._width else x + 1
-            self._height = max(self._height, y + 1) if self._height else y + 1
+        self.width = self.cells.shape[0]
+        self.height = self.cells.shape[1]
 
-    @property
-    def width(self):
-        return self._width
-
-    @property
-    def height(self):
-        return self._height
+    def walk(self, filter_check: callable) -> Generator[Tuple[int, int, Cell], None, None]:
+        for (x, y), cell in numpy.ndenumerate(self.cells):
+            if not filter_check(x, y, cell):
+                continue
+            yield (x, y), cell

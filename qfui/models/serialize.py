@@ -4,12 +4,40 @@ import typing
 from dataclasses import asdict, is_dataclass
 from typing import Union
 
+from qfui.models.layers import GridLayer
+from qfui.models.sections import GridSection
+
 
 class SerializationError(Exception):
     pass
 
 
-class Serializer:
+class GridSectionSerializer:
+
+    @classmethod
+    def serialize_value(cls, value: GridSection) -> dict:
+        base = asdict(value)
+        layers = base.pop("layers")
+        base = DataClassSerializer.serialize_value(base)
+        base["layers"] = [cls._serialize_layer(layer) for layer in layers]
+        return base
+
+    @classmethod
+    def _serialize_layer(cls, layer: dict) -> dict:
+        cells = layer.pop("cells")
+        serialized = []
+        for y in range(layer["height"]):
+            row = [
+                c.raw_text if c and not c.from_expansion else " "
+                for c in cells[0:cells.shape[0], y]
+            ]
+            serialized.append(",".join(row))
+        layer["cells"] = serialized
+        layer["encoding"] = "csv:qf"
+        return layer
+
+
+class DataClassSerializer:
 
     __TERMINAL_TYPES__ = [str, int, float, bool]
 
@@ -30,7 +58,7 @@ class Serializer:
         elif is_dataclass(value):
             ret = cls.serialize_dict(asdict(value))
         else:
-            raise SerializationError(f"Could not serialize {repr(value)} (type: {type(value)}")
+            raise SerializationError(f"Could not serialize {repr(value)} (type: {type(value)})")
         _visited.remove(id(value))
         return ret
 
@@ -49,6 +77,8 @@ class Serializer:
 
 class SerializingJSONEncoder(json.JSONEncoder):
     def default(self, o):
+        if isinstance(o, GridSection):
+            return GridSectionSerializer.serialize_value(o)
         if is_dataclass(o):
-            return Serializer.serialize_value(o)
+            return DataClassSerializer.serialize_value(o)
         return super().default(o)

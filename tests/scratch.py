@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import csv
 from qfui.models.enums import SectionModes
-from qfui.qfparser.importers import Blueprint
+from qfui.qfparser.importers import CSVImporter
 from qfui.models.serialize import SerializingJSONEncoder
 
 with open('data/dreamfort.csv', 'r') as csvfh:
@@ -20,9 +20,9 @@ with open('data/dreamfort.csv', 'r') as csvfh:
     print(json.dumps(sections, indent=2))
 
 
-thing = Blueprint('data/dreamfort.csv')
-thing.load()
+loader = CSVImporter()
+sections = loader.load('data/dreamfort.csv')
 # print(json.dumps([s for s in thing._sections if s.mode is SectionModes.ZONE], cls=SerializingJSONEncoder, indent=2))
 with open('data/dreamfort.json', 'w') as fh:
-    json.dump(thing._sections, fh, indent=2, cls=SerializingJSONEncoder)
+    json.dump(sections, fh, indent=2, cls=SerializingJSONEncoder)
 

@@ -1,7 +1,8 @@
 import re
 from abc import ABC, abstractmethod
-from typing import List, Optional, Generator
+from typing import List, Optional, Generator, Tuple
 
+import numpy
 from pyparsing import (
     printables, nums,
     Literal, Optional as ParserOptional, ParseException, Suppress, White, Word, ZeroOrMore
@@ -34,13 +35,11 @@ class ExpandingCellParser:
             return None
 
     @staticmethod
-    def _expand_kwargs(raw: str, layer_x: int, layer_y: int, width: int, height: int) -> Generator[dict, None, None]:
+    def _expand_kwargs(raw: str, layer_x: int, layer_y: int, width: int, height: int) -> Generator[tuple, None, None]:
         expanded = False
         for x_offset in range(0, width):
             for y_offset in range(0, height):
-                yield {
-                    "layer_x": layer_x + x_offset,
-                    "layer_y": layer_y + y_offset,
+                yield layer_x + x_offset, layer_y + y_offset, {
                     "from_expansion": expanded,
                     "raw_text": raw if not expanded else None
                 }
@@ -62,7 +61,7 @@ class DesignationCellParser(CellParser, ExpandingCellParser):
     def _skip_cell(raw_cell: str) -> bool:
         return __EMPTY_CELL_REGEX__.match(raw_cell) is not None
 
-    def parse(self, layer_x: int, layer_y: int, raw_cell: str) -> List[Cell]:
+    def parse(self, layer_x: int, layer_y: int, raw_cell: str) -> List[Tuple[int, int, Cell]]:
         cells = []
         if self._skip_cell(raw_cell):
             return cells
@@ -84,10 +83,10 @@ class DesignationCellParser(CellParser, ExpandingCellParser):
         height = parsed.get("height", 1)
         priority = int(matches.group("priority") or 4)
         designation = Designations.from_value(designation)
-        for cell_kwargs in self._expand_kwargs(raw_cell, layer_x, layer_y, width, height):
+        for x, y, cell_kwargs in self._expand_kwargs(raw_cell, layer_x, layer_y, width, height):
             cell_kwargs["priority"] = int(priority)
             cell_kwargs["designation"] = designation
-            cells.append(DesignationCell(**cell_kwargs))
+            cells.append((x, y, DesignationCell(**cell_kwargs)))
         return cells
 
 
@@ -97,7 +96,7 @@ class UnprocessedCellParser(CellParser, ExpandingCellParser):
     def _skip_cell(raw_cell: str) -> bool:
         return __EMPTY_CELL_REGEX__.match(raw_cell) is not None
 
-    def parse(self, layer_x: int, layer_y: int, raw_cell: str) -> List[Cell]:
+    def parse(self, layer_x: int, layer_y: int, raw_cell: str) -> List[Tuple[int, int, Cell]]:
         cells = []
         if self._skip_cell(raw_cell):
             return cells
@@ -109,7 +108,7 @@ class UnprocessedCellParser(CellParser, ExpandingCellParser):
         width = parsed.get("width", 1)
         height = parsed.get("height", 1)
         code_text = parsed["code_text"]
-        for cell_kwargs in self._expand_kwargs(raw_cell, layer_x, layer_y, width, height):
+        for x, y, cell_kwargs in self._expand_kwargs(raw_cell, layer_x, layer_y, width, height):
             cell_kwargs["code_text"] = code_text
-            cells.append(UnprocessedCell(**cell_kwargs))
+            cells.append((x, y, UnprocessedCell(**cell_kwargs)))
         return cells
