@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import List, Optional, Set, Any
+from typing import List, Optional, Set
 
-from PySide6.QtCore import QAbstractItemModel, QModelIndex, QObject, Qt, QSortFilterProxyModel, Signal
+from PySide6.QtCore import QAbstractItemModel, QModelIndex, QObject, Qt, QSortFilterProxyModel, Signal, Slot
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QTreeView, QToolBar, QVBoxLayout, QLineEdit, QLabel
 
-from qfui.controller import ProjectController
+from qfui.controller.messages import ControllerInterface
 from qfui.models.enums import SectionModes
 from qfui.models.layers import GridLayer
 from qfui.models.sections import Section, GridSection
+from qfui.models.project import SectionLayerIndex
 from qfui.widgets.modes import ModeSelectionDialog
 
 
@@ -23,11 +24,6 @@ class NavigationNode(ABC):
     @property
     @abstractmethod
     def tree_label(self) -> str:
-        pass
-
-    @property
-    @abstractmethod
-    def data_model(self) -> Any:
         pass
 
     @property
@@ -61,10 +57,6 @@ class GroupNode(NavigationNode):
     def tree_label(self) -> str:
         return self._name
 
-    @property
-    def data_model(self) -> Any:
-        return self._name
-
 
 class PropertyNode(NavigationNode):
 
@@ -78,82 +70,83 @@ class PropertyNode(NavigationNode):
         return self._name
 
     @property
-    def data_model(self) -> Any:
+    def value(self) -> str:
         return self._value
 
 
 class LayerNode(NavigationNode):
 
-    def __init__(self, parent: NavigationNode, layer_idx: int, layer: GridLayer):
-        self._layer = layer
-        self._layer_idx = layer_idx
+    def __init__(self, parent: SectionNode, layer_idx: int, layer: GridLayer):
+        self._section_layer_idx = SectionLayerIndex(parent.section_idx, layer_idx)
         children = [
-            PropertyNode(self, "Relative Z", str(self._layer.relative_z)),
-            PropertyNode(self, "Width", str(self._layer.width)),
-            PropertyNode(self, "Height", str(self._layer.height))
+            PropertyNode(self, "Relative Z", str(layer.relative_z)),
+            PropertyNode(self, "Width", str(layer.width)),
+            PropertyNode(self, "Height", str(layer.height))
         ]
         super().__init__(parent, children)
 
     @property
     def tree_label(self) -> str:
-        return f"Layer #{self._layer_idx:02d}"
+        return f"Layer #{self._section_layer_idx.layer_index:02d}"
 
     @property
-    def data_model(self) -> Any:
-        return self._layer
+    def section_layer_index(self) -> SectionLayerIndex:
+        return self._section_layer_idx
 
 
 class SectionNode(NavigationNode):
 
-    def __init__(self, parent: NavigationNode, section: Section):
-        self._section = section
+    def __init__(self, parent: Optional[NavigationNode], section_idx: int, section: Section):
+        self._section_idx = section_idx
+        self._section_mode = section.mode
+        self._section_label = section.label
+        self._section_comment = section.comment
         children = [
-            PropertyNode(self, "mode", self._section.mode.value),
-            PropertyNode(self, "label", self._section.label)
+            PropertyNode(self, "Mode", section.mode.value),
+            PropertyNode(self, "Label", section.label)
         ]
-        if self._section.start:
-            children.append(PropertyNode(self, "start", str(self._section.start)))
-        if self._section.mode == SectionModes.DIG:
+        if section.start:
+            children.append(PropertyNode(self, "Start", str(section.start)))
+        if section.mode == SectionModes.DIG:
             section: GridSection = section
             children += [LayerNode(self, i, l) for i, l in enumerate(section.layers)]
         super().__init__(parent, children)
 
     @property
     def mode(self) -> SectionModes:
-        return self._section.mode
+        return self._section_mode
+
+    @property
+    def section_idx(self) -> int:
+        return self._section_idx
 
     @property
     def tree_label(self) -> str:
-        return f"{self.index_in_parent:03d} - {self._section.label}"
+        return f"{self._section_idx:03d} - {self._section_label}"
 
     @property
-    def data_model(self) -> Any:
-        return self._section
+    def comment(self) -> str:
+        return self._section_comment
 
 
 class RootNode(NavigationNode):
 
-    def __init__(self, project: ProjectController = None):
+    def __init__(self, controller: ControllerInterface = None):
         super().__init__(None, [])
         self._project = None
-        self.set_project(project)
+        self.init_from_controller(controller)
 
-    def set_project(self, project: ProjectController):
+    def init_from_controller(self, controller: ControllerInterface):
         self._children = []
-        self._project = project
-        if not project:
+        if not controller:
             return
-        group_children = [SectionNode(None, s) for s in project.sections]
+        group_children = [SectionNode(None, i, s) for i, s in enumerate(controller.sections)]
         group = GroupNode(self, "Sections", group_children)
         self._children = [group]
 
     @property
     def tree_label(self) -> str:
-        return ''
-
-    @property
-    def data_model(self) -> Any:
-        return ''
+        return ""
 
 
 class NavigationTreeFilter(QSortFilterProxyModel):
@@ -190,16 +183,9 @@ class NavigationTreeFilter(QSortFilterProxyModel):
 
 class NavigationTree(QAbstractItemModel):
 
-    def __init__(self, project: Optional[ProjectController] = None):
+    def __init__(self):
         super().__init__()
-        self._project = project
-        self._root = RootNode(project)
-
-    def set_project(self, project: Optional[ProjectController] = None):
-        self.beginResetModel()
-        self._project = project
-        self._root.set_project(project)
-        self.endResetModel()
+        self._root = RootNode()
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int):
         if orientation != Qt.Horizontal or role != Qt.DisplayRole:
@@ -213,13 +199,11 @@ class NavigationTree(QAbstractItemModel):
         if not index.isValid() or role not in [Qt.DisplayRole, Qt.UserRole]:
             return None
         item: NavigationNode = index.internalPointer()
-        if role == Qt.UserRole:
-            return item.data_model
-        data = [item.tree_label, '']
+        data = [item.tree_label, ""]
         if isinstance(item, PropertyNode):
-            data[1] = item.data_model
+            data[1] = item.value
         if isinstance(item, SectionNode):
-            data[1] = item.data_model.comment
+            data[1] = item.comment
         return data[index.column()]
 
     def index(self, row: int, column: int, parent: QModelIndex) -> QModelIndex:
@@ -248,8 +232,6 @@ class NavigationTree(QAbstractItemModel):
 
 
 class NavigationWidget(QWidget):
-
-    layerSelected = Signal(GridLayer)
 
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
@@ -289,7 +271,7 @@ class NavigationWidget(QWidget):
 
     def _init_tree(self):
         self._tree_view = QTreeView(parent=self)
-        self._tree_model = NavigationTree(None)
+        self._tree_model = NavigationTree()
         self._tree_model_filter = NavigationTreeFilter()
         self._tree_model_filter.allowed_modes = self._default_mode_filters
         self._tree_model_filter.setSourceModel(self._tree_model)
@@ -319,9 +301,6 @@ class NavigationWidget(QWidget):
         self._filter_dialog.show()
         self._filter_dialog.setFixedSize(self._filter_dialog.width(), self._filter_dialog.height())
 
-    def set_project(self, project: ProjectController):
-        self._tree_model.set_project(project)
-
     def _tree_double_click(self):
         # TODO: We need signals, we probably also need a proper controller instead of
         #       blueprints in the tree view
@@ -331,4 +310,9 @@ class NavigationWidget(QWidget):
         index: QModelIndex = selected[0]
         data_model = index.model().data(index, Qt.UserRole)
         if isinstance(data_model, GridLayer):
-            self.layerSelected.emit(data_model)
+            #self.layerSelected.emit(data_model)
+            print("Should do a thing")
+
+    @Slot(ControllerInterface)
+    def project_changed(self, controller: ControllerInterface):
+        pass

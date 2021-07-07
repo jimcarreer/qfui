@@ -7,34 +7,25 @@ from PySide6.QtWidgets import QMainWindow, QDockWidget, QFileDialog
 from qfui.models.layers import GridLayer
 from qfui.models.project import Project
 from qfui.qfparser.importers import CSVImporter
-from qfui.controller import ProjectController
+from qfui.controller.project import ProjectController
 from qfui.widgets.gridview import LayerViewer
 from qfui.widgets.navigation import NavigationWidget
 
 
 class MainWindow(QMainWindow):
 
-    def __init__(self, project: Optional[ProjectController] = None):
+    def __init__(self, controller: Optional[ProjectController] = None):
         super().__init__()
-        self._project: Optional[ProjectController] = None
+        self._controller = controller
         self.setWindowTitle(self.tr("Quick Fort Designer"))
         self._init_actions()
         self._init_menus()
         self._init_docks()
         self._init_centrals()
-        self.set_project(project)
-
-    def set_project(self, project: Optional[ProjectController] = None):
-        self._project = project
-        self._navigation.widget().set_project(self._project)
-
-    def _render_layer(self, layer: GridLayer):
-        self._layer_view.render_grid_layer(layer)
 
     def _init_centrals(self):
         self._layer_view = LayerViewer()
         self.setCentralWidget(self._layer_view)
-        self._navigation.widget().layerSelected.connect(self._render_layer)
 
     def _import_handler(self):
         if not self._import_dialog.exec_():
@@ -56,7 +47,9 @@ class MainWindow(QMainWindow):
 
     def _init_docks(self):
         self._navigation = QDockWidget(self)
-        self._navigation.setWidget(NavigationWidget(self))
+        inner_widget = NavigationWidget(self)
+        self._controller.project_changed.connect(inner_widget.project_changed)
+        self._navigation.setWidget(inner_widget)
         self._navigation.setAllowedAreas(
             Qt.LeftDockWidgetArea |
             Qt.RightDockWidgetArea

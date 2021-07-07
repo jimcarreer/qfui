@@ -117,6 +117,13 @@ https://www.mediafire.com/folder/u38qsqr1bq6wu/Community_Quickfort_Blueprints_v2
 * UI Widgets use signals connected to controller slots for user interaction
   * This can be circular, IE UI Widget signal causes data change which causes a signal that causes it to update
   * To prototype this I should probably try something simple like layer visibility
+  * Define a ProjectController interface and then concrete Impl
+  * Pass around "controller messages" via signals + slots
 * Version Modeling (i.e. instead of models/.../ do models/v1/.../ etc)
 * JSON schema validation of deserialized models
 * dev script to generate schema from module
+
+
+## TODOS
+* Everything should be snake case unless it's a QT override
+* QObject.tr to global tr until function
