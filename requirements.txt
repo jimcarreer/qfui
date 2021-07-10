@@ -1,5 +1,5 @@
 # Install requirements
-pyside6~=6.0.0
+pyside6~=6.1.0
 pyparsing~=2.4.0
 numpy~=1.21.0
 

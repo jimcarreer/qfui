@@ -1,4 +1,3 @@
-from abc import ABC
 from typing import Optional, List
 
 from PySide6.QtCore import Signal
@@ -8,12 +7,13 @@ from qfui.models.project import Project
 from qfui.models.sections import Section
 
 
-class ProjectController(ControllerInterface, ABC):
+class ProjectController(ControllerInterface):
 
     project_changed = Signal(ControllerInterface)
     layer_visibility_changed = Signal(ControllerInterface, LayerVisibilityChanged)
 
     def __init__(self, project: Optional[Project] = None):
+        super().__init__()
         self._project = project or Project()
 
     @property

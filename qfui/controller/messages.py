@@ -1,8 +1,8 @@
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod, ABCMeta
 from dataclasses import dataclass
 from typing import List
 
-from PySide6.QtCore import Slot
+from PySide6.QtCore import Slot, QObject
 
 from qfui.models.project import Project, SectionLayerIndex
 from qfui.models.sections import Section
@@ -15,7 +15,11 @@ class LayerVisibilityChanged:
     visible: bool
 
 
-class ControllerInterface(ABC):
+class QABCMeta(type(QObject), ABCMeta):
+    pass
+
+
+class ControllerInterface(ABC, QObject, metaclass=QABCMeta):
 
     @property
     @abstractmethod

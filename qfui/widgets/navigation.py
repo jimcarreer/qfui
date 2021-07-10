@@ -183,9 +183,9 @@ class NavigationTreeFilter(QSortFilterProxyModel):
 
 class NavigationTree(QAbstractItemModel):
 
-    def __init__(self):
+    def __init__(self, controller: Optional[ControllerInterface] = None):
         super().__init__()
-        self._root = RootNode()
+        self._root = RootNode() if not controller else RootNode(controller)
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int):
         if orientation != Qt.Horizontal or role != Qt.DisplayRole:
@@ -199,6 +199,8 @@ class NavigationTree(QAbstractItemModel):
         if not index.isValid() or role not in [Qt.DisplayRole, Qt.UserRole]:
             return None
         item: NavigationNode = index.internalPointer()
+        if role == Qt.UserRole:
+            return item
         data = [item.tree_label, ""]
         if isinstance(item, PropertyNode):
             data[1] = item.value
@@ -229,6 +231,9 @@ class NavigationTree(QAbstractItemModel):
             return 0
         parent: NavigationNode = self._root if not parent.isValid() else parent.internalPointer()
         return len(parent.child_nodes)
+
+    def reinitialize(self, controller: ControllerInterface):
+        self._root = RootNode(controller)
 
 
 class NavigationWidget(QWidget):
@@ -308,11 +313,13 @@ class NavigationWidget(QWidget):
         if not selected:
             return
         index: QModelIndex = selected[0]
-        data_model = index.model().data(index, Qt.UserRole)
-        if isinstance(data_model, GridLayer):
+        node = index.data(Qt.UserRole)
+        if isinstance(node, LayerNode):
             #self.layerSelected.emit(data_model)
             print("Should do a thing")
 
     @Slot(ControllerInterface)
     def project_changed(self, controller: ControllerInterface):
-        pass
+        self._tree_model_filter.beginResetModel()
+        self._tree_model.reinitialize(controller)
+        self._tree_model_filter.endResetModel()

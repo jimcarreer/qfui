@@ -4,6 +4,7 @@ from typing import List
 from qfui.models.sections import Section
 
 
+@dataclass
 class SectionLayerIndex:
 
     section_index: int = None

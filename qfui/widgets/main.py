@@ -14,14 +14,16 @@ from qfui.widgets.navigation import NavigationWidget
 
 class MainWindow(QMainWindow):
 
-    def __init__(self, controller: Optional[ProjectController] = None):
+    def __init__(self, project: Optional[Project] = None):
         super().__init__()
-        self._controller = controller
+        self._controller = ProjectController()
         self.setWindowTitle(self.tr("Quick Fort Designer"))
         self._init_actions()
         self._init_menus()
         self._init_docks()
         self._init_centrals()
+        if project is not None:
+            self._controller.project = project
 
     def _init_centrals(self):
         self._layer_view = LayerViewer()
