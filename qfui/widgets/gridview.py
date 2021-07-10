@@ -163,3 +163,4 @@ class LayerViewer(QGraphicsView):
         for (x, y), cell in grid_layer.walk(lambda i, j, c: c is not None):
             layer_item._cells[x][y] = DesignationCell(x, y)
         self.scene().addItem(layer_item)
+        self.fitInView(layer_item, Qt.KeepAspectRatio)

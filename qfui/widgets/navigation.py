@@ -324,3 +324,4 @@ class NavigationWidget(QWidget):
         self._tree_model_filter.beginResetModel()
         self._tree_model.reinitialize(controller)
         self._tree_model_filter.endResetModel()
+        self._tree_view.expandToDepth(0)
