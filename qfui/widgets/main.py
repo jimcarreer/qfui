@@ -5,7 +5,7 @@ from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QDockWidget, QFileDialog
 
 from qfui.models.layers import GridLayer
-from qfui.models.project import Project
+from qfui.models.project import Project, SectionLayerIndex
 from qfui.qfparser.importers import CSVImporter
 from qfui.controller.project import ProjectController
 from qfui.widgets.gridview import LayerViewer
@@ -27,6 +27,8 @@ class MainWindow(QMainWindow):
 
     def _init_centrals(self):
         self._layer_view = LayerViewer()
+        self._controller.layer_visibility_changed.connect(self._layer_view.layer_visibility_changed)
+        self._controller.project_changed.connect(self._layer_view.project_changed)
         self.setCentralWidget(self._layer_view)
 
     def _import_handler(self):
@@ -34,7 +36,7 @@ class MainWindow(QMainWindow):
             return
         file = self._import_dialog.selectedFiles()[0]
         importer = CSVImporter()
-        self.set_project(ProjectController(Project(importer.load(file))))
+        self._controller.project = Project(importer.load(file))
 
     def _init_actions(self):
         self._import_dialog = QFileDialog(self)
@@ -49,11 +51,14 @@ class MainWindow(QMainWindow):
 
     def _init_docks(self):
         self._navigation = QDockWidget(self)
-        inner_widget = NavigationWidget(self)
-        self._controller.project_changed.connect(inner_widget.project_changed)
-        self._navigation.setWidget(inner_widget)
+        self._navigation.setWidget(NavigationWidget(self))
+        self._controller.project_changed.connect(self._navigation.widget().project_changed)
+        self._navigation.widget().layer_selected.connect(self._layer_click_handler)
         self._navigation.setAllowedAreas(
             Qt.LeftDockWidgetArea |
             Qt.RightDockWidgetArea
         )
         self.addDockWidget(Qt.RightDockWidgetArea, self._navigation)
+
+    def _layer_click_handler(self, section_layer_idx: SectionLayerIndex):
+        self._controller.visible_layers = [section_layer_idx]

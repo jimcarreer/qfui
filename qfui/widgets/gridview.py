@@ -4,13 +4,15 @@ import math
 from typing import Optional, Generator, Tuple, List
 
 import numpy
-from PySide6.QtCore import QRectF
+from PySide6.QtCore import QRectF, Slot
 from PySide6.QtGui import QPainter, QMouseEvent, QPen, Qt, QBrush, QColor
 from PySide6.QtWidgets import (
     QGraphicsItem, QGraphicsView, QGraphicsScene, QStyleOptionGraphicsItem, QWidget, QMainWindow, QApplication,
 )
 
+from qfui.controller.messages import ControllerInterface
 from qfui.models.layers import GridLayer
+from qfui.models.project import SectionLayerIndex
 
 CELL_PX_SIZE = 20
 CELL_BORDER_PX_SIZE = 1
@@ -133,9 +135,6 @@ class LayerViewer(QGraphicsView):
         self.setTransformationAnchor(QGraphicsView.AnchorViewCenter)
         self.setResizeAnchor(QGraphicsView.AnchorViewCenter)
 
-        # scene.addItem(self.world_matrix)
-        # self.fitInView(self.world_matrix, Qt.KeepAspectRatio)
-
     def wheelEvent(self, event):
         delta = event.angleDelta().y()
         scale = math.pow(2.0, -delta / 240.0)
@@ -149,20 +148,18 @@ class LayerViewer(QGraphicsView):
 
         self.scale(scale_factor, scale_factor)
 
-    def render_grid_layer(self, grid_layer: GridLayer):
+    @Slot(ControllerInterface)
+    def project_changed(self, _):
+        self.scene().clear()
+
+    @Slot(ControllerInterface, list)
+    def layer_visibility_changed(self, controller: ControllerInterface, visible: List[SectionLayerIndex]):
+        layer = controller.grid_layer(visible[0])
+        self._render_grid_layer(layer)
+
+    def _render_grid_layer(self, grid_layer: GridLayer):
         self.scene().clear()
         layer_item = LayerItem("test", grid_layer.width, grid_layer.height)
         for (x, y), cell in grid_layer.walk(lambda i, j, c: c is not None):
             layer_item._cells[x][y] = DesignationCell(x, y)
         self.scene().addItem(layer_item)
-
-
-if __name__ == '__main__':
-    import sys
-    app = QApplication(sys.argv)
-    mainWin = QMainWindow()
-    mainWin.setCentralWidget(LayerViewer())
-    availableGeometry = mainWin.screen().availableGeometry()
-    mainWin.resize(availableGeometry.width() / 3, availableGeometry.height() / 2)
-    mainWin.show()
-    sys.exit(app.exec_())

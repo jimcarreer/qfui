@@ -238,6 +238,8 @@ class NavigationTree(QAbstractItemModel):
 
 class NavigationWidget(QWidget):
 
+    layer_selected = Signal(SectionLayerIndex)
+
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
         self._default_mode_filters = set([m for m in SectionModes if m != SectionModes.IGNORE])
@@ -272,7 +274,7 @@ class NavigationWidget(QWidget):
             self,
             self._default_mode_filters,
         )
-        self._filter_dialog.okClicked.connect(self._update_filters)
+        self._filter_dialog.ok_clicked.connect(self._update_filters)
 
     def _init_tree(self):
         self._tree_view = QTreeView(parent=self)
@@ -307,16 +309,13 @@ class NavigationWidget(QWidget):
         self._filter_dialog.setFixedSize(self._filter_dialog.width(), self._filter_dialog.height())
 
     def _tree_double_click(self):
-        # TODO: We need signals, we probably also need a proper controller instead of
-        #       blueprints in the tree view
         selected = self._tree_view.selectedIndexes() or None
         if not selected:
             return
         index: QModelIndex = selected[0]
         node = index.data(Qt.UserRole)
         if isinstance(node, LayerNode):
-            #self.layerSelected.emit(data_model)
-            print("Should do a thing")
+            self.layer_selected.emit(node.section_layer_index)
 
     @Slot(ControllerInterface)
     def project_changed(self, controller: ControllerInterface):

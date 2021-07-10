@@ -8,7 +8,7 @@ from qfui.models.enums import SectionModes
 
 class ModeSelection(QWidget):
 
-    selectionChanged = Signal(set)
+    selection_changed = Signal(set)
 
     def __init__(self, parent: Optional[QWidget] = None, selected: Set[SectionModes] = None):
         super().__init__(parent)
@@ -32,13 +32,13 @@ class ModeSelection(QWidget):
 
     def _box_check(self):
         self._selected = [m for m, v in self._checkboxes.items() if v.isChecked()]
-        self.selectionChanged.emit(self._selected)
+        self.selection_changed.emit(self._selected)
 
 
 class ModeSelectionDialog(QDialog):
 
-    okClicked = Signal(set)
-    cancelClicked = Signal(set)
+    ok_clicked = Signal(set)
+    cancel_clicked = Signal(set)
 
     def __init__(self, title: str = "Modes", parent: Optional[QWidget] = None, selected: Set[SectionModes] = None):
         super().__init__(parent=parent)
@@ -50,7 +50,7 @@ class ModeSelectionDialog(QDialog):
         self._group.setLayout(self._group_layout)
         self._layout.addWidget(self._group)
         self._mode_select = ModeSelection(self, selected)
-        self._mode_select.selectionChanged.connect(self.selection_change)
+        self._mode_select.selection_changed.connect(self.selection_change)
         self._group_layout.addWidget(self._mode_select)
         self._button_layout = QHBoxLayout()
         self._layout.addLayout(self._button_layout, stretch=True)
@@ -75,8 +75,8 @@ class ModeSelectionDialog(QDialog):
 
     def ok_click(self):
         self.close()
-        self.okClicked.emit(self._mode_select.selected)
+        self.ok_clicked.emit(self._mode_select.selected)
 
     def cancel_click(self):
         self.close()
-        self.cancelClicked.emit(self._mode_select.selected)
+        self.cancel_clicked.emit(self._mode_select.selected)

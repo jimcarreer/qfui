@@ -1,18 +1,11 @@
 from abc import ABC, abstractmethod, ABCMeta
-from dataclasses import dataclass
-from typing import List
+from typing import List, Optional
 
-from PySide6.QtCore import Slot, QObject
+from PySide6.QtCore import QObject
 
+from qfui.models.layers import GridLayer
 from qfui.models.project import Project, SectionLayerIndex
 from qfui.models.sections import Section
-
-
-@dataclass
-class LayerVisibilityChanged:
-
-    layer_index: SectionLayerIndex
-    visible: bool
 
 
 class QABCMeta(type(QObject), ABCMeta):
@@ -36,7 +29,16 @@ class ControllerInterface(ABC, QObject, metaclass=QABCMeta):
     def sections(self) -> List[Section]:
         pass
 
+    @property
     @abstractmethod
-    @Slot(SectionLayerIndex, bool)
-    def set_layer_visibility(self, event: LayerVisibilityChanged):
+    def visible_layers(self) -> List[SectionLayerIndex]:
+        pass
+
+    @visible_layers.setter
+    @abstractmethod
+    def visible_layers(self, visible: List[SectionLayerIndex]) -> List[SectionLayerIndex]:
+        pass
+
+    @abstractmethod
+    def grid_layer(self, idx: SectionLayerIndex) -> Optional[GridLayer]:
         pass
