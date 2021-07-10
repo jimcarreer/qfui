@@ -12,12 +12,14 @@ from qfui.models.enums import SectionModes
 from qfui.models.layers import GridLayer
 from qfui.models.sections import Section, GridSection
 from qfui.models.project import SectionLayerIndex
+from qfui.utils import QABCMeta
 from qfui.widgets.modes import ModeSelectionDialog
 
 
-class NavigationNode(ABC):
+class NavigationNode(ABC, QObject, metaclass=QABCMeta):
 
     def __init__(self, parent: Optional[NavigationNode], children: List[NavigationNode]):
+        super().__init__()
         self._parent = parent
         self._children = children
 
@@ -79,15 +81,15 @@ class LayerNode(NavigationNode):
     def __init__(self, parent: SectionNode, layer_idx: int, layer: GridLayer):
         self._section_layer_idx = SectionLayerIndex(parent.section_idx, layer_idx)
         children = [
-            PropertyNode(self, "Relative Z", str(layer.relative_z)),
-            PropertyNode(self, "Width", str(layer.width)),
-            PropertyNode(self, "Height", str(layer.height))
+            PropertyNode(self, self.tr("Relative Z"), str(layer.relative_z)),
+            PropertyNode(self, self.tr("Width"), str(layer.width)),
+            PropertyNode(self, self.tr("Height"), str(layer.height))
         ]
         super().__init__(parent, children)
 
     @property
     def tree_label(self) -> str:
-        return f"Layer #{self._section_layer_idx.layer_index:02d}"
+        return self.tr("Layer") + f" #{self._section_layer_idx.layer_index:02d}"
 
     @property
     def section_layer_index(self) -> SectionLayerIndex:
@@ -102,11 +104,11 @@ class SectionNode(NavigationNode):
         self._section_label = section.label
         self._section_comment = section.comment
         children = [
-            PropertyNode(self, "Mode", section.mode.value),
-            PropertyNode(self, "Label", section.label)
+            PropertyNode(self, self.tr("Mode"), section.mode.value),
+            PropertyNode(self, self.tr("Label"), section.label)
         ]
         if section.start:
-            children.append(PropertyNode(self, "Start", str(section.start)))
+            children.append(PropertyNode(self, self.tr("Start"), str(section.start)))
         if section.mode == SectionModes.DIG:
             section: GridSection = section
             children += [LayerNode(self, i, l) for i, l in enumerate(section.layers)]
@@ -141,7 +143,7 @@ class RootNode(NavigationNode):
         if not controller:
             return
         group_children = [SectionNode(None, i, s) for i, s in enumerate(controller.sections)]
-        group = GroupNode(self, "Sections", group_children)
+        group = GroupNode(self, self.tr("Sections"), group_children)
         self._children = [group]
 
     @property

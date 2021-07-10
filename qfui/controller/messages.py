@@ -6,10 +6,7 @@ from PySide6.QtCore import QObject
 from qfui.models.layers import GridLayer
 from qfui.models.project import Project, SectionLayerIndex
 from qfui.models.sections import Section
-
-
-class QABCMeta(type(QObject), ABCMeta):
-    pass
+from qfui.utils import QABCMeta
 
 
 class ControllerInterface(ABC, QObject, metaclass=QABCMeta):
