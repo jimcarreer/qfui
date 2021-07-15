@@ -3,14 +3,13 @@ import math
 
 from typing import Optional, Generator, Tuple, List
 
-from PySide6.QtCore import QRectF, Slot, QRect, QPointF, QLine, QLineF
+from PySide6.QtCore import QRectF, Slot, QRect, QLineF
 from PySide6.QtGui import QPainter, QMouseEvent, QPen, Qt, QBrush, QColor
 from PySide6.QtWidgets import (
-    QGraphicsItem, QGraphicsView, QGraphicsScene, QStyleOptionGraphicsItem, QWidget,
+    QGraphicsItem, QGraphicsView, QGraphicsScene, QStyleOptionGraphicsItem, QWidget, QGraphicsSceneMouseEvent,
 )
 
 from qfui.controller.messages import ControllerInterface
-from qfui.models.layers import GridLayer
 from qfui.models.project import SectionLayerIndex
 
 CELL_PX_SIZE = 20
@@ -70,15 +69,15 @@ class GridLayerItem(QGraphicsItem):
         return QRectF(0, 0, px_width, px_height)
 
     def _paint_grid(self, painter: QPainter):
-        pix_x = self._cell_width * CELL_PX_SIZE
-        pix_y = self._cell_height * CELL_PX_SIZE
         painter.save()
         painter.setPen(self._grid_pen)
-        #painter.drawRect(QRectF(0, 0, pix_x, pix_y))
-        for x in range(0, pix_x + CELL_PX_SIZE, CELL_PX_SIZE):
-            painter.drawLine(x, 0, x, pix_y)
-        for y in range(0, pix_y + CELL_PX_SIZE, CELL_PX_SIZE):
-            painter.drawLine(0, y, pix_x, y)
+        painter.drawRect(self.boundingRect())
+        # pix_x = self._cell_width * CELL_PX_SIZE
+        # pix_y = self._cell_height * CELL_PX_SIZE
+        # for x in range(0, pix_x + CELL_PX_SIZE, CELL_PX_SIZE):
+        #     painter.drawLine(x, 0, x, pix_y)
+        # for y in range(0, pix_y + CELL_PX_SIZE, CELL_PX_SIZE):
+        #     painter.drawLine(0, y, pix_x, y)
         painter.restore()
 
     def paint(self, painter: QPainter, option: QStyleOptionGraphicsItem, widget: Optional[QWidget] = ...):
@@ -143,7 +142,13 @@ class GridScene(QGraphicsScene):
         self._grid_pen.setWidth(1)
         self._grid_pen.setCosmetic(True)
 
-    def drawBackground(self, painter: QPainter, rect: QRect) -> None:
+    def mousePressEvent(self, event: QGraphicsSceneMouseEvent):
+        pos = event.scenePos()
+        x = int(math.floor(pos.x() / CELL_PX_SIZE))
+        y = int(math.floor(pos.y() / CELL_PX_SIZE))
+        print(f"{x}, {y}")
+
+    def drawForeground(self, painter: QPainter, rect: QRect) -> None:
         painter.save()
         painter.setPen(self._grid_pen)
         left = int(rect.left()) - (int(rect.left()) % CELL_PX_SIZE)
