@@ -31,9 +31,16 @@ class ControllerInterface(ABC, QObject, metaclass=QABCMeta):
     def visible_layers(self) -> List[SectionLayerIndex]:
         pass
 
-    @visible_layers.setter
     @abstractmethod
-    def visible_layers(self, visible: List[SectionLayerIndex]) -> List[SectionLayerIndex]:
+    def clear_all_visible_layers(self):
+        pass
+
+    @abstractmethod
+    def set_layers_as_visible(self, visible: List[SectionLayerIndex]):
+        pass
+
+    @abstractmethod
+    def remove_layers_as_visible(self, remove: List[SectionLayerIndex]):
         pass
 
     @abstractmethod

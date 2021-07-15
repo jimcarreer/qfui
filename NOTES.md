@@ -125,5 +125,15 @@ https://www.mediafire.com/folder/u38qsqr1bq6wu/Community_Quickfort_Blueprints_v2
 
 
 ## TODOS
-* Everything should be snake case unless it's a QT override
-* QObject.tr to global tr until function
+* ~~Everything should be snake case unless it's a QT override~~ looks done
+* ~~QObject.tr to global tr until function~~ It's more complicated than this
+* Multilayer visibility
+  * Navigation view needs context menu for setting layer visibility / active layer
+  * Navigation view needs "Visible Layer" node item so user can see visible layers
+    at a glance
+  * Visible layers should probably have adjustable alpha settings
+  * Visibility / alphas can be properties under the visibility node
+  * Layer viewer needs to handle multilayer visibility.
+    * Viewer should have a global grid that is the smallest grid that
+      completely encompasses all visible layers (take max width / height)
+    * Only the active layer's grid should be drawn with solid lines

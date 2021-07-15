@@ -34,10 +34,33 @@ class ProjectController(ControllerInterface):
     def visible_layers(self) -> List[SectionLayerIndex]:
         return self._project.visible_layers
 
-    @visible_layers.setter
-    def visible_layers(self, visible: List[SectionLayerIndex]):
-        self.project.visible_layers = visible
-        self.layer_visibility_changed.emit(self, visible)
+    def _update_visible_layers(self, layer_indexes: List[SectionLayerIndex], remove: bool = False) -> bool:
+        modified = False
+        for idx in layer_indexes:
+            if not remove and idx in self.project.visible_layers:
+                continue
+            elif remove and idx not in self.project.visible_layers:
+                continue
+            modified = True
+            if remove:
+                self.project.visible_layers.remove(idx)
+            else:
+                self.project.visible_layers.append(idx)
+        return modified
+
+    def clear_all_visible_layers(self):
+        if not self.project.visible_layers:
+            return
+        self.project.visible_layers.clear()
+        self.layer_visibility_changed.emit(self, [])
+
+    def set_layers_as_visible(self, visible: List[SectionLayerIndex]):
+        if self._update_visible_layers(visible):
+            self.layer_visibility_changed.emit(self, self.project.visible_layers)
+
+    def remove_layers_as_visible(self, remove: List[SectionLayerIndex]):
+        if self._update_visible_layers(remove, True):
+            self.layer_visibility_changed.emit(self, self.project.visible_layers)
 
     def grid_layer(self, idx: SectionLayerIndex) -> Optional[GridLayer]:
         if idx.section_index >= len(self.project.sections):

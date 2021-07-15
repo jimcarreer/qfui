@@ -4,8 +4,8 @@ from abc import ABC, abstractmethod
 from typing import List, Optional, Set
 
 from PySide6.QtCore import QAbstractItemModel, QModelIndex, QObject, Qt, QSortFilterProxyModel, Signal, Slot
-from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QWidget, QTreeView, QToolBar, QVBoxLayout, QLineEdit, QLabel
+from PySide6.QtGui import QIcon, QAction
+from PySide6.QtWidgets import QWidget, QTreeView, QToolBar, QVBoxLayout, QLineEdit, QLabel, QMenu
 
 from qfui.controller.messages import ControllerInterface
 from qfui.models.enums import SectionModes
@@ -240,7 +240,8 @@ class NavigationTree(QAbstractItemModel):
 
 class NavigationWidget(QWidget):
 
-    layer_selected = Signal(SectionLayerIndex)
+    layers_set_as_visible = Signal(list)
+    remove_layers_as_visible = Signal(list)
 
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
@@ -288,6 +289,8 @@ class NavigationWidget(QWidget):
         self._tree_view.setColumnWidth(0, 250)
         self._layout.addWidget(self._tree_view)
         self._filter_dialog.selected = self._tree_model_filter.allowed_modes
+        self._tree_view.setContextMenuPolicy(Qt.CustomContextMenu)
+        self._tree_view.customContextMenuRequested.connect(self._show_tree_context_menu)
         self._tree_view.doubleClicked.connect(self._tree_double_click)
 
     def _clear_filters(self):
@@ -310,14 +313,31 @@ class NavigationWidget(QWidget):
         self._filter_dialog.show()
         self._filter_dialog.setFixedSize(self._filter_dialog.width(), self._filter_dialog.height())
 
+    def _show_tree_context_menu(self, position):
+        selected = self._tree_view.selectedIndexes() or None
+        if not selected:
+            return
+        index: QModelIndex = selected[0]
+        node = index.data(Qt.UserRole)
+        if not isinstance(node, LayerNode):
+            return
+        menu = QMenu()
+        action = QAction(self.tr("Set visible"))
+        action.triggered.connect(lambda: self.layers_set_as_visible.emit([node.section_layer_index]))
+        menu.addAction(action)
+        action2 = QAction(self.tr("Set invisible"))
+        action2.triggered.connect(lambda: self.remove_layers_as_visible.emit([node.section_layer_index]))
+        menu.addAction(action2)
+        menu.exec(self._tree_view.viewport().mapToGlobal(position))
+
     def _tree_double_click(self):
         selected = self._tree_view.selectedIndexes() or None
         if not selected:
             return
         index: QModelIndex = selected[0]
         node = index.data(Qt.UserRole)
-        if isinstance(node, LayerNode):
-            self.layer_selected.emit(node.section_layer_index)
+        #if isinstance(node, LayerNode):
+        #    self.layer_selected.emit(node.section_layer_index)
 
     @Slot(ControllerInterface)
     def project_changed(self, controller: ControllerInterface):

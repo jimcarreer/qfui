@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction
@@ -53,12 +53,10 @@ class MainWindow(QMainWindow):
         self._navigation = QDockWidget(self)
         self._navigation.setWidget(NavigationWidget(self))
         self._controller.project_changed.connect(self._navigation.widget().project_changed)
-        self._navigation.widget().layer_selected.connect(self._layer_click_handler)
+        self._navigation.widget().layers_set_as_visible.connect(self._controller.set_layers_as_visible)
+        self._navigation.widget().remove_layers_as_visible.connect(self._controller.remove_layers_as_visible)
         self._navigation.setAllowedAreas(
             Qt.LeftDockWidgetArea |
             Qt.RightDockWidgetArea
         )
         self.addDockWidget(Qt.RightDockWidgetArea, self._navigation)
-
-    def _layer_click_handler(self, section_layer_idx: SectionLayerIndex):
-        self._controller.visible_layers = [section_layer_idx]
