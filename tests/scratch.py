@@ -2,9 +2,21 @@ from __future__ import annotations
 
 import json
 import csv
+import uuid
+from unittest.mock import patch
+
 from qfui.models.enums import SectionModes
 from qfui.qfparser.importers import CSVImporter
 from qfui.models.serialize import SerializingJSONEncoder
+
+TEST_UUIDS_COUNT = 0
+
+
+def mock_uuid():
+    global TEST_UUIDS_COUNT
+    TEST_UUIDS_COUNT += 1
+    return uuid.UUID(int=TEST_UUIDS_COUNT)
+
 
 with open('data/dreamfort.csv', 'r') as csvfh:
     prefixes = [f'#{v}' for v in SectionModes.values()]
@@ -20,9 +32,13 @@ with open('data/dreamfort.csv', 'r') as csvfh:
     print(json.dumps(sections, indent=2))
 
 
-loader = CSVImporter()
-sections = loader.load('data/dreamfort.csv')
-# print(json.dumps([s for s in thing._sections if s.mode is SectionModes.ZONE], cls=SerializingJSONEncoder, indent=2))
-with open('data/dreamfort.json', 'w') as fh:
-    json.dump(sections, fh, indent=2, cls=SerializingJSONEncoder)
+@patch('uuid.uuid4', mock_uuid)
+def make_dump():
+    loader = CSVImporter()
+    sections = loader.load('data/dreamfort.csv')
+    # print(json.dumps([s for s in thing._sections if s.mode is SectionModes.ZONE], cls=SerializingJSONEncoder, indent=2))
+    with open('data/dreamfort.json', 'w') as fh:
+        json.dump(sections, fh, indent=2, cls=SerializingJSONEncoder)
 
+
+make_dump()

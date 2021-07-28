@@ -1,6 +1,7 @@
 import enum
 import json
 import typing
+import uuid
 from dataclasses import asdict, is_dataclass
 from typing import Union
 
@@ -45,6 +46,8 @@ class DataClassSerializer:
     def serialize_value(cls, value, _visited: typing.Optional[set] = None):
         if any(isinstance(value, t) for t in cls.__TERMINAL_TYPES__) or value is None:
             return value
+        if isinstance(value, uuid.UUID):
+            return str(value)
         if issubclass(value.__class__, enum.Enum):
             return cls.serialize_value(value.value)
         _visited = _visited or set()
@@ -77,6 +80,8 @@ class DataClassSerializer:
 
 class SerializingJSONEncoder(json.JSONEncoder):
     def default(self, o):
+        if isinstance(o, uuid.UUID):
+            return str(o)
         if isinstance(o, GridSection):
             return GridSectionSerializer.serialize_value(o)
         if is_dataclass(o):

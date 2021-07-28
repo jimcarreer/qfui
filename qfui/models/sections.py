@@ -26,8 +26,9 @@ class SectionStart:
 @dataclass
 class Section:
 
+    suid: uuid.UUID = None
     mode: SectionModes = None
-    label: str = f"{uuid.uuid4()}"
+    label: str = None
     hidden: bool = False
     start: SectionStart = None
     message: str = None
@@ -37,6 +38,10 @@ class Section:
         if key == "mode" and self.mode is not None:
             raise AttributeError("mode can only be set at initialization")
         super(Section, self).__setattr__(key, value)
+
+    def __post_init__(self):
+        self.suid = self.suid or uuid.uuid4()
+        self.label = self.label or str(self.suid)
 
 
 @dataclass
