@@ -17,7 +17,8 @@ def start(subject: str, col: int, tokens: list):
     marker = tokens.pop(0)
     comment = tokens.pop()
     ret = {"start_comment": comment} if comment else {}
-    ret.update({"start_x": tokens.pop(0), "start_y": tokens.pop(0)} if len(tokens) == 2 else {})
+    # Lau supports 1 based indexing and is what QF expects for start x, y
+    ret.update({"start_x": tokens.pop(0) - 1, "start_y": tokens.pop(0) - 1} if len(tokens) == 2 else {})
     return [marker, ret]
 
 

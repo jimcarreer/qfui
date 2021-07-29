@@ -10,11 +10,11 @@ from qfui.qfparser.sections import SectionParser
 @pytest.mark.parametrize("rot", [0, 1, 2, 3])
 @pytest.mark.parametrize("mode, ex_md", [(f"#{m.value}", m) for m in SectionModes])
 @pytest.mark.parametrize("start, ex_ss", [
-    ("start  (11, 23; start comments)", SectionStart(11, 23, " start comments")),
-    ("   start(19;19;mid-stairs)   ", SectionStart(19, 19, "mid-stairs")),
-    ("start(1,2)", SectionStart(1, 2, None)),
-    ("start( 1  2 )", SectionStart(1, 2, None)),
-    ("start(33 23 space comments)", SectionStart(33, 23, "space comments")),
+    ("start  (11, 23; start comments)", SectionStart(10, 22, " start comments")),
+    ("   start(19;19;mid-stairs)   ", SectionStart(18, 18, "mid-stairs")),
+    ("start(1,2)", SectionStart(0, 1, None)),
+    ("start( 1  2 )", SectionStart(0, 1, None)),
+    ("start(33 23 space comments)", SectionStart(32, 22, "space comments")),
     ("", None)
 ])
 @pytest.mark.parametrize("comment, ex_cm", [

@@ -911,8 +911,8 @@
     "label": "central_stairs",
     "hidden": true,
     "start": {
-      "x": 2,
-      "y": 2,
+      "x": 1,
+      "y": 1,
       "comment": null
     },
     "message": null,
@@ -1206,8 +1206,8 @@
     "label": "surface_clear_small",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -1261,8 +1261,8 @@
     "label": "surface_zones",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": "Remember to assign your dogs to the pasture surrounding the central stairs and your grazing animals to the large pasture.\nFeel free to assign an unimportant animal to the pasture in the main entranceway to use as bait during sieges.",
@@ -1312,8 +1312,8 @@
     "label": "surface_name_zones",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -1339,8 +1339,8 @@
     "label": "surface_build_start",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": "There is room to the left of the carpenter's workshop to build one more workshop of any type if you need it.",
@@ -1382,8 +1382,8 @@
     "label": "surface_place_start",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": "if you haven't already, now is a good time to deconstruct the wagon",
@@ -1418,8 +1418,8 @@
     "label": "surface_query_start",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -1452,8 +1452,8 @@
     "label": "surface_channel",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -1507,8 +1507,8 @@
     "label": "surface_clear",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -1565,8 +1565,8 @@
     "label": "surface_cover_vents",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -1620,8 +1620,8 @@
     "label": "surface_cover_stairs",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -1701,8 +1701,8 @@
     "label": "surface_stairs_doors",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -1749,8 +1749,8 @@
     "label": "surface_pre_building",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -1842,8 +1842,8 @@
     "label": "surface_place",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -1895,8 +1895,8 @@
     "label": "surface_build",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": "Use autofarm to manage farm crop selection.\nRemember to connect the levers to the gates once they are built.",
@@ -1953,8 +1953,8 @@
     "label": "surface_query",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": "Remember to assign a minecart to the trade goods quantum stockpile.\nFeel free to adjust the configuration of the \"trade goods\" feeder stockpile so it accepts the item types you want to trade away. If those items types are also accepted by other stockpiles, configure those stockpiles to give to the \"trade goods\" stockpile.\nYou might also want to set the \"trade goods quantum\" stockpile to Auto Trade if you have the autotrade DFHack plugin enabled.",
@@ -2004,8 +2004,8 @@
     "label": "surface_clear_large",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -2062,8 +2062,8 @@
     "label": "surface_query2",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -2113,8 +2113,8 @@
     "label": "surface_walls",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -2169,8 +2169,8 @@
     "label": "surface_floors",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -2224,8 +2224,8 @@
     "label": "surface_traps",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -2282,8 +2282,8 @@
     "label": "surface_roof",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -2338,8 +2338,8 @@
     "label": "surface_roof2",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -2379,8 +2379,8 @@
     "label": "surface_corridor",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -2475,8 +2475,8 @@
     "label": "surface_corridor_traps",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -2529,8 +2529,8 @@
     "label": "surface_query_corridor",
     "hidden": true,
     "start": {
-      "x": 19,
-      "y": 19,
+      "x": 18,
+      "y": 18,
       "comment": null
     },
     "message": null,
@@ -2681,8 +2681,8 @@
     "label": "farming1",
     "hidden": false,
     "start": {
-      "x": 16,
-      "y": 18,
+      "x": 15,
+      "y": 17,
       "comment": " central stairs"
     },
     "message": "This would be a good time to queue up manager orders for /farming2. Once the area is dug out, continue with /farming2.",
@@ -2814,8 +2814,8 @@
     "label": "farming_build",
     "hidden": true,
     "start": {
-      "x": 16,
-      "y": 18,
+      "x": 15,
+      "y": 17,
       "comment": null
     },
     "message": null,
@@ -2867,8 +2867,8 @@
     "label": "farming_place",
     "hidden": true,
     "start": {
-      "x": 16,
-      "y": 18,
+      "x": 15,
+      "y": 17,
       "comment": null
     },
     "message": null,
@@ -2921,8 +2921,8 @@
     "label": "farming_query_stockpiles",
     "hidden": true,
     "start": {
-      "x": 16,
-      "y": 18,
+      "x": 15,
+      "y": 17,
       "comment": null
     },
     "message": "remember to:\n- assign a minecart to the refuse quantum stockpile\n- if the industry level is already built, configure the jugs, pots, and bags stockpiles to take from the \"Goods\" quantum stockpile on the industry level",
@@ -2973,8 +2973,8 @@
     "label": "farming_rooms",
     "hidden": true,
     "start": {
-      "x": 16,
-      "y": 18,
+      "x": 15,
+      "y": 17,
       "comment": null
     },
     "message": "Check to ensure the lower office got assigned to your manager and assign the upper office to your bookkeeper (if different from your manager).",
@@ -3009,8 +3009,8 @@
     "label": "farming_build2",
     "hidden": true,
     "start": {
-      "x": 16,
-      "y": 18,
+      "x": 15,
+      "y": 17,
       "comment": null
     },
     "message": null,
@@ -3058,8 +3058,8 @@
     "label": "farming_query_plots",
     "hidden": true,
     "start": {
-      "x": 16,
-      "y": 18,
+      "x": 15,
+      "y": 17,
       "comment": null
     },
     "message": null,
@@ -3095,8 +3095,8 @@
     "label": "farming_build3",
     "hidden": true,
     "start": {
-      "x": 16,
-      "y": 18,
+      "x": 15,
+      "y": 17,
       "comment": null
     },
     "message": null,
@@ -3303,8 +3303,8 @@
     "label": "industry1",
     "hidden": false,
     "start": {
-      "x": 18,
-      "y": 18,
+      "x": 17,
+      "y": 17,
       "comment": " central stairs"
     },
     "message": "This would be a good time to queue manager orders for /industry2. Once the area is dug out, continue with /industry2.",
@@ -3389,8 +3389,8 @@
     "label": "industry_build",
     "hidden": true,
     "start": {
-      "x": 18,
-      "y": 18,
+      "x": 17,
+      "y": 17,
       "comment": null
     },
     "message": null,
@@ -3446,8 +3446,8 @@
     "label": "industry_place",
     "hidden": true,
     "start": {
-      "x": 18,
-      "y": 18,
+      "x": 17,
+      "y": 17,
       "comment": null
     },
     "message": null,
@@ -3505,8 +3505,8 @@
     "label": "industry_query",
     "hidden": true,
     "start": {
-      "x": 18,
-      "y": 18,
+      "x": 17,
+      "y": 17,
       "comment": null
     },
     "message": "remember to:\n- assign minecarts to to your quantum stockpile hauling routes\n- if the farming level is already built, give from the \"Goods\" quantum stockpile to the jugs, pots, and bags stockpiles on the farming level\n- if you want to automatically melt goblinite and other low-quality weapons and armor, mark the south-east stockpiles for auto-melt\n- now that your industry is set up, run \"orders import automation\" to automate your fort's basic needs (download automation.json from https://drive.google.com/file/d/17WcN5mK-rnADOm2B_JFpPnByYgkYjxhb/view?usp=sharing and put it in your dfhack-config/orders/ directory)",
@@ -3656,8 +3656,8 @@
     "label": "services1",
     "hidden": false,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": " central stairs"
     },
     "message": "This would be a good time to queue manager orders for /services2 and /services3. Once the area is dug out, continue with /services2.",
@@ -3910,8 +3910,8 @@
     "label": "services_build",
     "hidden": true,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": null
     },
     "message": null,
@@ -3961,8 +3961,8 @@
     "label": "services_place",
     "hidden": true,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": null
     },
     "message": null,
@@ -4018,8 +4018,8 @@
     "label": "services_zones",
     "hidden": true,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": null
     },
     "message": null,
@@ -4071,8 +4071,8 @@
     "label": "services_name_zones",
     "hidden": true,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": null
     },
     "message": null,
@@ -4098,8 +4098,8 @@
     "label": "services_query_stockpiles",
     "hidden": true,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": null
     },
     "message": "Configure the training ammo stockpile to take from the metalworker quantum on the industry level.",
@@ -4151,8 +4151,8 @@
     "label": "services_query_dining",
     "hidden": false,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": null
     },
     "message": "the bedrooms above the tavern are left unconfigured so you can add them as rented rooms",
@@ -4193,8 +4193,8 @@
     "label": "services_build2",
     "hidden": true,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": null
     },
     "message": null,
@@ -4282,8 +4282,8 @@
     "label": "services_build3",
     "hidden": true,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": null
     },
     "message": null,
@@ -4335,8 +4335,8 @@
     "label": "services_place_jail",
     "hidden": true,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": null
     },
     "message": null,
@@ -4374,8 +4374,8 @@
     "label": "services_query_jail",
     "hidden": true,
     "start": {
-      "x": 23,
-      "y": 22,
+      "x": 22,
+      "y": 21,
       "comment": null
     },
     "message": null,
@@ -4448,8 +4448,8 @@
     "label": "guildhall1",
     "hidden": false,
     "start": {
-      "x": 15,
-      "y": 15,
+      "x": 14,
+      "y": 14,
       "comment": " central stairs"
     },
     "message": "This would be a good time to queue manager orders for /guildhall2. Once the area is dug out, continue with /guildhall2.",
@@ -4501,8 +4501,8 @@
     "label": "guildhall2",
     "hidden": false,
     "start": {
-      "x": 15,
-      "y": 15,
+      "x": 14,
+      "y": 14,
       "comment": " central stairs"
     },
     "message": "Smooth tiles and furnish/declare locations as required.",
@@ -4620,8 +4620,8 @@
     "label": "suites1",
     "hidden": false,
     "start": {
-      "x": 18,
-      "y": 18,
+      "x": 17,
+      "y": 17,
       "comment": " central ramp"
     },
     "message": "This would be a good time to queue manager orders for /suites2. Once the area is dug out, run /suites2",
@@ -4680,8 +4680,8 @@
     "label": "suites2",
     "hidden": false,
     "start": {
-      "x": 18,
-      "y": 18,
+      "x": 17,
+      "y": 17,
       "comment": " central ramp"
     },
     "message": "bedrooms are left unconfigured so you can assign them to specific nobles",
@@ -4790,8 +4790,8 @@
     "label": "apartments1",
     "hidden": false,
     "start": {
-      "x": 18,
-      "y": 18,
+      "x": 17,
+      "y": 17,
       "comment": " central ramp"
     },
     "message": "This would be a good time to enqueue manager orders for /apartments2 and /apartments3. Once the area is dug out, continue with /apartments2.",
@@ -4850,8 +4850,8 @@
     "label": "apartments2",
     "hidden": false,
     "start": {
-      "x": 18,
-      "y": 18,
+      "x": 17,
+      "y": 17,
       "comment": " central ramp"
     },
     "message": "Once beds have been placed, continue with /apartments3.",
@@ -4930,8 +4930,8 @@
     "label": "apartments_rooms",
     "hidden": true,
     "start": {
-      "x": 18,
-      "y": 18,
+      "x": 17,
+      "y": 17,
       "comment": null
     },
     "message": null,
@@ -4986,8 +4986,8 @@
     "label": "apartments_build2",
     "hidden": true,
     "start": {
-      "x": 18,
-      "y": 18,
+      "x": 17,
+      "y": 17,
       "comment": null
     },
     "message": "Coffins should be configured with DFHack burial script",
