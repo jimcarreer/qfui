@@ -16,9 +16,36 @@ from qfui.utils import QABCMeta
 from qfui.widgets.modes import ModeSelectionDialog
 
 
-class NavigationNode(ABC, QObject, metaclass=QABCMeta):
+class Node(ABC, QObject, metaclass=QABCMeta):
 
-    def __init__(self, parent: Optional[NavigationNode], children: List[NavigationNode]):
+    @property
+    @abstractmethod
+    def tree_label(self) -> str:
+        pass
+
+    @property
+    @abstractmethod
+    def child_nodes(self) -> List[SimpleNode]:
+        pass
+
+    @property
+    @abstractmethod
+    def parent_node(self) -> Optional[SimpleNode]:
+        pass
+
+    @parent_node.setter
+    def parent_node(self, parent: Optional[SimpleNode]):
+        pass
+
+    @property
+    @abstractmethod
+    def index_in_parent(self) -> int:
+        pass
+
+
+class SimpleNode(Node, metaclass=QABCMeta):
+
+    def __init__(self, parent: Optional[Node], children: List[Node]):
         super().__init__()
         self._parent = parent
         self._children = children
@@ -29,15 +56,15 @@ class NavigationNode(ABC, QObject, metaclass=QABCMeta):
         pass
 
     @property
-    def child_nodes(self) -> List[NavigationNode]:
+    def child_nodes(self) -> List[Node]:
         return self._children
 
     @property
-    def parent_node(self) -> Optional[NavigationNode]:
+    def parent_node(self) -> Optional[SimpleNode]:
         return self._parent
 
     @parent_node.setter
-    def parent_node(self, parent: Optional[NavigationNode]):
+    def parent_node(self, parent: Optional[SimpleNode]):
         self._parent = parent
 
     @property
@@ -47,9 +74,9 @@ class NavigationNode(ABC, QObject, metaclass=QABCMeta):
         return self.parent_node.child_nodes.index(self)
 
 
-class GroupNode(NavigationNode):
+class GroupNode(SimpleNode):
 
-    def __init__(self, parent: NavigationNode, name: str, children: List[NavigationNode]):
+    def __init__(self, parent: SimpleNode, name: str, children: List[SimpleNode]):
         for child in children:
             child.parent_node = self
         super().__init__(parent, children)
@@ -60,9 +87,9 @@ class GroupNode(NavigationNode):
         return self._name
 
 
-class PropertyNode(NavigationNode):
+class PropertyNode(SimpleNode):
 
-    def __init__(self, parent: NavigationNode, name: str, value: str):
+    def __init__(self, parent: SimpleNode, name: str, value: str):
         super().__init__(parent, [])
         self._name = name
         self._value = value
@@ -76,33 +103,38 @@ class PropertyNode(NavigationNode):
         return self._value
 
 
-class LayerNode(NavigationNode):
+class LayerNode(SimpleNode):
 
-    def __init__(self, parent: SectionNode, layer_idx: int, layer: GridLayer):
-        self._section_layer_idx = SectionLayerIndex(parent.section_idx, layer_idx)
+    def __init__(self, label: str, parent: Node, section_layer_index: SectionLayerIndex, layer: GridLayer):
+        self._section_layer_idx = section_layer_index
+        self._tree_label = label
         children = [
             PropertyNode(self, self.tr("Relative Z"), str(layer.relative_z)),
             PropertyNode(self, self.tr("Width"), str(layer.width)),
-            PropertyNode(self, self.tr("Height"), str(layer.height))
+            PropertyNode(self, self.tr("Height"), str(layer.height)),
+            PropertyNode(self, self.tr("Visible"), str(layer.visible)),
+            PropertyNode(self, self.tr("Editable"), str(layer.active))
         ]
         super().__init__(parent, children)
 
     @property
     def tree_label(self) -> str:
-        return self.tr("Layer") + f" #{self._section_layer_idx.layer_index:02d}"
+        return self._tree_label
 
     @property
     def section_layer_index(self) -> SectionLayerIndex:
         return self._section_layer_idx
 
 
-class SectionNode(NavigationNode):
+class SectionNode(SimpleNode):
 
-    def __init__(self, parent: Optional[NavigationNode], section_idx: int, section: Section):
+    def __init__(self, parent: Optional[SimpleNode], section_idx: int, section: Section, active_only: bool = False):
         self._section_idx = section_idx
         self._section_mode = section.mode
         self._section_label = section.label
         self._section_comment = section.comment
+        self._has_active_layer = False
+        self._active_only = active_only
         children = [
             PropertyNode(self, self.tr("Mode"), section.mode.value),
             PropertyNode(self, self.tr("Label"), section.label)
@@ -111,8 +143,18 @@ class SectionNode(NavigationNode):
             children.append(PropertyNode(self, self.tr("Start"), str(section.start)))
         if section.mode == SectionModes.DIG:
             section: GridSection = section
-            children += [LayerNode(self, i, l) for i, l in enumerate(section.layers)]
+            prefix = self.tr("Layer")
+            children += [
+                LayerNode(f"{prefix} {lidx:03d}", self, SectionLayerIndex(section.suid, layer.luid), layer)
+                for lidx, layer in enumerate(section.layers)
+                if not self._active_only or layer.active or layer.visible
+            ]
+            self._has_active_layer = any(layer.active or layer.visible for layer in section.layers)
         super().__init__(parent, children)
+
+    @property
+    def has_active_layer(self) -> bool:
+        return self._has_active_layer
 
     @property
     def mode(self) -> SectionModes:
@@ -131,20 +173,38 @@ class SectionNode(NavigationNode):
         return self._section_comment
 
 
-class RootNode(NavigationNode):
+class RootNode(Node):
+
+    @property
+    def index_in_parent(self) -> int:
+        return -1
+
+    @property
+    def parent_node(self) -> Optional[SimpleNode]:
+        return None
 
     def __init__(self, controller: ControllerInterface = None):
-        super().__init__(None, [])
-        self._project = None
+        super().__init__()
+        self._sections_node = GroupNode(self, self.tr("Sections"), [])
+        self._active_node = GroupNode(self, self.tr("Active Layers"), [])
+        self._layer_lookup = {}
         self.init_from_controller(controller)
 
     def init_from_controller(self, controller: ControllerInterface):
-        self._children = []
         if not controller:
             return
-        group_children = [SectionNode(None, i, s) for i, s in enumerate(controller.sections)]
-        group = GroupNode(self, self.tr("Sections"), group_children)
-        self._children = [group]
+        sections_children = []
+        active_section_children = []
+        for sidx, section in enumerate(controller.sections):
+            sections_children.append(SectionNode(None, sidx, section))
+            if sections_children[-1].has_active_layer:
+                active_section_children.append(SectionNode(None, sidx, section, True))
+        self._sections_node = GroupNode(self, self.tr("Sections"), sections_children)
+        self._active_node = GroupNode(self, self.tr("Active Layers"), active_section_children)
+
+    @property
+    def child_nodes(self) -> List[SimpleNode]:
+        return [self._active_node, self._sections_node]
 
     @property
     def tree_label(self) -> str:
@@ -200,7 +260,7 @@ class NavigationTree(QAbstractItemModel):
     def data(self, index: QModelIndex, role: int) -> Qt.QVariant:
         if not index.isValid() or role not in [Qt.DisplayRole, Qt.UserRole]:
             return None
-        item: NavigationNode = index.internalPointer()
+        item: SimpleNode = index.internalPointer()
         if role == Qt.UserRole:
             return item
         data = [item.tree_label, ""]
@@ -213,7 +273,7 @@ class NavigationTree(QAbstractItemModel):
     def index(self, row: int, column: int, parent: QModelIndex) -> QModelIndex:
         if not self.hasIndex(row, column, parent):
             return QModelIndex()
-        parent: NavigationNode = self._root if not parent.isValid() else parent.internalPointer()
+        parent: SimpleNode = self._root if not parent.isValid() else parent.internalPointer()
         child = parent.child_nodes[row] if row < len(parent.child_nodes) else None
         if not child:
             return QModelIndex()
@@ -222,8 +282,8 @@ class NavigationTree(QAbstractItemModel):
     def parent(self, index: QModelIndex) -> QObject:
         if not index.isValid():
             return QModelIndex()
-        child: NavigationNode = index.internalPointer()
-        parent: NavigationNode = child.parent_node
+        child: SimpleNode = index.internalPointer()
+        parent: SimpleNode = child.parent_node
         if parent == self._root:
             return QModelIndex()
         return self.createIndex(parent.index_in_parent, 0, parent)
@@ -231,7 +291,7 @@ class NavigationTree(QAbstractItemModel):
     def rowCount(self, parent: QModelIndex) -> int:
         if parent.column() > 0:
             return 0
-        parent: NavigationNode = self._root if not parent.isValid() else parent.internalPointer()
+        parent: SimpleNode = self._root if not parent.isValid() else parent.internalPointer()
         return len(parent.child_nodes)
 
     def reinitialize(self, controller: ControllerInterface):
@@ -291,7 +351,6 @@ class NavigationWidget(QWidget):
         self._filter_dialog.selected = self._tree_model_filter.allowed_modes
         self._tree_view.setContextMenuPolicy(Qt.CustomContextMenu)
         self._tree_view.customContextMenuRequested.connect(self._show_tree_context_menu)
-        self._tree_view.doubleClicked.connect(self._tree_double_click)
 
     def _clear_filters(self):
         self._tree_model_filter.beginResetModel()
@@ -330,17 +389,16 @@ class NavigationWidget(QWidget):
         menu.addAction(action2)
         menu.exec(self._tree_view.viewport().mapToGlobal(position))
 
-    def _tree_double_click(self):
-        selected = self._tree_view.selectedIndexes() or None
-        if not selected:
-            return
-        index: QModelIndex = selected[0]
-        node = index.data(Qt.UserRole)
-        #if isinstance(node, LayerNode):
-        #    self.layer_selected.emit(node.section_layer_index)
-
     @Slot(ControllerInterface)
     def project_changed(self, controller: ControllerInterface):
+        self._tree_model_filter.beginResetModel()
+        self._tree_model.reinitialize(controller)
+        self._tree_model_filter.endResetModel()
+        self._tree_view.expandToDepth(0)
+
+    @Slot(ControllerInterface, list, list)
+    def layer_visibility_changed(self, controller: ControllerInterface, **kwargs):
+        print('HERE')
         self._tree_model_filter.beginResetModel()
         self._tree_model.reinitialize(controller)
         self._tree_model_filter.endResetModel()

@@ -11,7 +11,7 @@ from qfui.models.sections import Section, GridSection
 class ProjectController(ControllerInterface):
 
     project_changed = Signal(ControllerInterface)
-    layer_visibility_changed = Signal(ControllerInterface, list)
+    layer_visibility_changed = Signal(ControllerInterface, list, list)
 
     def __init__(self, project: Optional[Project] = None):
         super().__init__()
@@ -31,43 +31,34 @@ class ProjectController(ControllerInterface):
         return self._project.sections
 
     @property
-    def visible_layers(self) -> List[SectionLayerIndex]:
-        return self._project.visible_layers
+    def visible_layers(self) -> List[GridLayer]:
+        return [l for _, l in self._project.find_layers(lambda i, l: l.visible)]
 
-    def _update_visible_layers(self, layer_indexes: List[SectionLayerIndex], remove: bool = False) -> bool:
-        modified = False
+    def _update_visible_layers(self, layer_indexes: List[SectionLayerIndex], remove: bool = False) -> list:
+        modified = []
         for idx in layer_indexes:
-            if not remove and idx in self.project.visible_layers:
+            if not (layer := self._project.get_grid_layer(idx)):
+                continue  # TODO: Log warn about this
+            if (layer.visible and not remove) or (not layer.visible and remove):
                 continue
-            elif remove and idx not in self.project.visible_layers:
-                continue
-            modified = True
-            if remove:
-                self.project.visible_layers.remove(idx)
-            else:
-                self.project.visible_layers.append(idx)
+            modified.append(idx)
+            layer.visible = False if remove else True
         return modified
 
     def clear_all_visible_layers(self):
         if not self.project.visible_layers:
             return
+        removed = [i for i in self.project.visible_layers]
         self.project.visible_layers.clear()
-        self.layer_visibility_changed.emit(self, [])
+        self.layer_visibility_changed.emit(self, removed, [])
 
     def set_layers_as_visible(self, visible: List[SectionLayerIndex]):
-        if self._update_visible_layers(visible):
-            self.layer_visibility_changed.emit(self, self.project.visible_layers)
+        if added := self._update_visible_layers(visible):
+            self.layer_visibility_changed.emit(self, [], added)
 
     def remove_layers_as_visible(self, remove: List[SectionLayerIndex]):
-        if self._update_visible_layers(remove, True):
-            self.layer_visibility_changed.emit(self, self.project.visible_layers)
+        if removed := self._update_visible_layers(remove, True):
+            self.layer_visibility_changed.emit(self, removed, [])
 
     def grid_layer(self, idx: SectionLayerIndex) -> Optional[GridLayer]:
-        if idx.section_index >= len(self.project.sections):
-            return None
-        section = self._project.sections[idx.section_index]
-        if not isinstance(section, GridSection):
-            return None
-        if idx.layer_index >= len(section.layers):
-            return None
-        return section.layers[idx.layer_index]
+        return self._project.get_grid_layer(idx)

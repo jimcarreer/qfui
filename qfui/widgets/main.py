@@ -1,11 +1,10 @@
-from typing import Optional, List
+from typing import Optional
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QDockWidget, QFileDialog
 
-from qfui.models.layers import GridLayer
-from qfui.models.project import Project, SectionLayerIndex
+from qfui.models.project import Project
 from qfui.qfparser.importers import CSVImporter
 from qfui.controller.project import ProjectController
 from qfui.widgets.gridview import LayerViewer
@@ -55,6 +54,7 @@ class MainWindow(QMainWindow):
         self._controller.project_changed.connect(self._navigation.widget().project_changed)
         self._navigation.widget().layers_set_as_visible.connect(self._controller.set_layers_as_visible)
         self._navigation.widget().remove_layers_as_visible.connect(self._controller.remove_layers_as_visible)
+        self._controller.layer_visibility_changed.connect(self._navigation.widget().layer_visibility_changed)
         self._navigation.setAllowedAreas(
             Qt.LeftDockWidgetArea |
             Qt.RightDockWidgetArea

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import uuid
+from abc import ABC
 from dataclasses import dataclass, field
 from typing import List, Generator, Tuple
 
@@ -10,7 +11,7 @@ from qfui.models.cells import Cell
 
 
 @dataclass
-class Layer:
+class Layer(ABC):
 
     luid: uuid.UUID = None
 

@@ -172,9 +172,10 @@ class LayerViewer(QGraphicsView):
         scene = GridScene(self)
         scene.setItemIndexMethod(QGraphicsScene.NoIndex)
         self.setScene(scene)
+        self.setViewportUpdateMode(QGraphicsView.FullViewportUpdate)
         self.setRenderHint(QPainter.Antialiasing)
-        self.setTransformationAnchor(QGraphicsView.AnchorViewCenter)
-        self.setResizeAnchor(QGraphicsView.AnchorViewCenter)
+        self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
+        self.setResizeAnchor(QGraphicsView.AnchorUnderMouse)
 
     def wheelEvent(self, event):
         delta = event.angleDelta().y()
@@ -182,9 +183,9 @@ class LayerViewer(QGraphicsView):
         self.scale_view(scale)
 
     def scale_view(self, scale_factor):
-        factor = self.transform().scale(scale_factor, scale_factor).mapRect(QRectF(0, 0, 1, 1)).width()
+        factor = self.transform().scale(scale_factor, scale_factor).mapRect(QRectF(0, 0, 1.0, 1.0)).width()
 
-        if factor < 0.07 or factor > 100:
+        if factor < 0.25 or factor > 25:
             return
 
         self.scale(scale_factor, scale_factor)
@@ -192,17 +193,21 @@ class LayerViewer(QGraphicsView):
     @Slot(ControllerInterface)
     def project_changed(self, _):
         self.scene().clear()
+        scene = GridScene(self)
+        scene.setItemIndexMethod(QGraphicsScene.NoIndex)
+        self.setScene(scene)
+        self.scale_view(1.0)
 
-    @Slot(ControllerInterface, list)
-    def layer_visibility_changed(self, controller: ControllerInterface, visible: List[SectionLayerIndex]):
+    @Slot(ControllerInterface, list, list)
+    def layer_visibility_changed(self, controller: ControllerInterface, *_):
         self.scene().clear()
+        visible = controller.visible_layers
         if not visible:
             return
 
         layer_items = []
         max_w, max_h = 1, 1
-        for idx in visible:
-            layer = controller.grid_layer(idx)
+        for layer in visible:
             max_w, max_h = max(layer.width, max_w), max(layer.height, max_h)
 
             layer_item = LayerItem(layer.width, layer.height)

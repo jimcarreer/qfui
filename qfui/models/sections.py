@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import uuid
+from abc import ABC
 from dataclasses import dataclass, field
 from typing import List, Optional
 
@@ -24,7 +25,7 @@ class SectionStart:
 
 
 @dataclass
-class Section:
+class Section(ABC):
 
     suid: uuid.UUID = None
     mode: SectionModes = None
