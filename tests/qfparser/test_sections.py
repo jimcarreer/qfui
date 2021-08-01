@@ -7,6 +7,14 @@ from qfui.models.sections import SectionStart
 from qfui.qfparser.sections import SectionParser
 
 
+NON_GRID_MODES = [
+    SectionModes.ALIASES,
+    SectionModes.META,
+    SectionModes.NOTES,
+    SectionModes.IGNORE,
+]
+
+
 @pytest.mark.parametrize("rot", [0, 1, 2, 3])
 @pytest.mark.parametrize("mode, ex_md", [(f"#{m.value}", m) for m in SectionModes])
 @pytest.mark.parametrize("start, ex_ss", [
@@ -47,6 +55,9 @@ def test_section_mode_line_parsing(
     # These 3 can be in any order so we rotate their order 0 - 3 times to test all combinations
     raw = deque([start, message, hidden, label])
     raw.rotate(rot)
+    # This is defaulted for grid mode sections
+    if ex_md not in NON_GRID_MODES and ex_ss is None:
+        ex_ss = SectionStart(0, 0, None)
     raw = " ".join([r for r in raw if r])
     raw = f"{raw.rstrip()}" if raw else ""
     raw = f"{mode} {raw}{comment}"

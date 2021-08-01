@@ -55,3 +55,11 @@ class RawSection(Section):
 class GridSection(Section):
 
     layers: List[GridLayer] = field(default_factory=list)
+
+    def __post_init__(self):
+        super().__post_init__()
+        # Grid sections without starts get a 0, 0 (aka 1, 1 in lau) start
+        if not self.start:
+            self.start = SectionStart(0, 0)
+        self.start.x = self.start.x or 0
+        self.start.y = self.start.y or 0
