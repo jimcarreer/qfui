@@ -7,6 +7,7 @@ from PySide6.QtCore import QRectF, Slot, QRect, QLineF
 from PySide6.QtGui import QPainter, QMouseEvent, QPen, Qt, QBrush, QColor
 from PySide6.QtWidgets import (
     QGraphicsItem, QGraphicsView, QGraphicsScene, QStyleOptionGraphicsItem, QWidget, QGraphicsSceneMouseEvent,
+    QGraphicsItemGroup,
 )
 
 from qfui.controller.messages import ControllerInterface
@@ -199,23 +200,33 @@ class LayerViewer(QGraphicsView):
             return
 
         layer_items = []
-        max_w, max_h = 1, 1
-        for layer in visible:
-            max_w, max_h = max(layer.width, max_w), max(layer.height, max_h)
-
+        left, right, bottom, top = math.inf, -math.inf, -math.inf, math.inf
+        for idx, layer in visible.items():
             layer_item = LayerItem(layer.width, layer.height)
+            # TODO: CLean this up / init from Layer
             for (x, y), cell in layer.walk(lambda i, j, c: c is not None):
                 layer_item._cells[x][y] = DesignationCell(x, y)
+            start = controller.layer_start_position(idx)
+            real_x = start.x * CELL_PX_SIZE
+            real_y = start.y * CELL_PX_SIZE
+            real_l = layer_item.boundingRect().left() - real_x
+            real_r = layer_item.boundingRect().right() - real_x
+            real_t = layer_item.boundingRect().top() - real_y
+            real_b = layer_item.boundingRect().bottom() - real_y
+            left = min(left, real_l)
+            right = max(right, real_r)
+            top = min(top, real_t)
+            bottom = max(bottom, real_b)
+            layer_item.setPos(-real_x, -real_y)
             layer_items.append(layer_item)
 
-        grid_item = GridLayerItem(max_w, max_h)
+        bounding_w = right - left
+        bounding_h = bottom - top
+        print(f'{top/CELL_PX_SIZE}, {left/CELL_PX_SIZE}, {right/CELL_PX_SIZE}, {bottom/CELL_PX_SIZE}')
+        print(f'{bounding_w/CELL_PX_SIZE}, {bounding_h/CELL_PX_SIZE}')
+        grid_item = GridLayerItem(bounding_w/CELL_PX_SIZE, bounding_h/CELL_PX_SIZE)
+        grid_item.setPos(left, top)
         for layer_item in layer_items:
-            #layer_item.setPos(self._grid_origin[0] - CELL_PX_SIZE/2 - 1, self._grid_origin[1] - CELL_PX_SIZE/2)
-            #new_x = max(0, center_gx - int((layer_item.cell_width)/2))
-            #new_y = max(0, center_gy - int((layer_item.cell_height)/2))
-            #print(f'{layer_item} {new_x} {new_y}')
-            #layer_item.setPos(new_x * CELL_PX_SIZE, new_y * CELL_PX_SIZE)
             self.scene().addItem(layer_item)
-
         self.scene().addItem(grid_item)
         self.fitInView(grid_item, Qt.KeepAspectRatio)

@@ -37,6 +37,9 @@ class Project:
     def get_grid_layer(self, section_layer_id: SectionLayerIndex) -> Optional[GridLayer]:
         return self._section_layer_lookup.get(section_layer_id, None)
 
+    def get_section(self, suuid: uuid.UUID) -> Optional[Section]:
+        return self._section_lookup.get(suuid, None)
+
     def find_layers(self, filter_fn: Callable[[SectionLayerIndex, Layer], bool]) -> Generator:
         for layer_idx, layer in self._section_layer_lookup.items():
             if not filter_fn(layer_idx, layer):
