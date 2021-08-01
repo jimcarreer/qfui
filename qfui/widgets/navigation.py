@@ -145,7 +145,7 @@ class SectionNode(SimpleNode):
             section: GridSection = section
             prefix = self.tr("Layer")
             children += [
-                LayerNode(f"{prefix} {lidx:03d}", self, SectionLayerIndex(section.suid, layer.luid), layer)
+                LayerNode(f"{prefix} {lidx:03d}", self, SectionLayerIndex(section.suuid, layer.luuid), layer)
                 for lidx, layer in enumerate(section.layers)
                 if not self._active_only or layer.active or layer.visible
             ]
@@ -398,7 +398,6 @@ class NavigationWidget(QWidget):
 
     @Slot(ControllerInterface, list, list)
     def layer_visibility_changed(self, controller: ControllerInterface, **kwargs):
-        print('HERE')
         self._tree_model_filter.beginResetModel()
         self._tree_model.reinitialize(controller)
         self._tree_model_filter.endResetModel()

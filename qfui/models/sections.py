@@ -27,7 +27,7 @@ class SectionStart:
 @dataclass
 class Section(ABC):
 
-    suid: uuid.UUID = None
+    suuid: uuid.UUID = None
     mode: SectionModes = None
     label: str = None
     hidden: bool = False
@@ -41,8 +41,8 @@ class Section(ABC):
         super(Section, self).__setattr__(key, value)
 
     def __post_init__(self):
-        self.suid = self.suid or uuid.uuid4()
-        self.label = self.label or str(self.suid)
+        self.suuid = self.suuid or uuid.uuid4()
+        self.label = self.label or str(self.suuid)
 
 
 @dataclass

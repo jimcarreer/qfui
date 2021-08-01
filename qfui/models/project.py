@@ -9,8 +9,8 @@ from qfui.models.sections import Section, GridSection
 @dataclass(eq=True, frozen=True, order=True)
 class SectionLayerIndex:
 
-    section_index: uuid.UUID = None
-    layer_index: uuid.UUID = None
+    suuid: uuid.UUID = None
+    luuid: uuid.UUID = None
 
 
 @dataclass
@@ -26,11 +26,11 @@ class Project:
         self._section_lookup = {}
         self._section_layer_lookup = {}
         for s in self.sections:
-            self._section_lookup[s.suid] = s
+            self._section_lookup[s.suuid] = s
             if not isinstance(s, GridSection):
                 continue
             self._section_layer_lookup.update({
-                SectionLayerIndex(s.suid, layer.luid): layer
+                SectionLayerIndex(s.suuid, layer.luuid): layer
                 for layer in s.layers
             })
 

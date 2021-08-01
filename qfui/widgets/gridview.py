@@ -10,7 +10,6 @@ from PySide6.QtWidgets import (
 )
 
 from qfui.controller.messages import ControllerInterface
-from qfui.models.project import SectionLayerIndex
 
 CELL_PX_SIZE = 20
 CELL_BORDER_PX_SIZE = 1
@@ -72,12 +71,6 @@ class GridLayerItem(QGraphicsItem):
         painter.save()
         painter.setPen(self._grid_pen)
         painter.drawRect(self.boundingRect())
-        # pix_x = self._cell_width * CELL_PX_SIZE
-        # pix_y = self._cell_height * CELL_PX_SIZE
-        # for x in range(0, pix_x + CELL_PX_SIZE, CELL_PX_SIZE):
-        #     painter.drawLine(x, 0, x, pix_y)
-        # for y in range(0, pix_y + CELL_PX_SIZE, CELL_PX_SIZE):
-        #     painter.drawLine(0, y, pix_x, y)
         painter.restore()
 
     def paint(self, painter: QPainter, option: QStyleOptionGraphicsItem, widget: Optional[QWidget] = ...):

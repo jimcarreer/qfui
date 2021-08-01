@@ -13,10 +13,10 @@ from qfui.models.cells import Cell
 @dataclass
 class Layer(ABC):
 
-    luid: uuid.UUID = None
+    luuid: uuid.UUID = None
 
     def __post_init__(self):
-        self.luid = self.luid or uuid.uuid4()
+        self.luuid = self.luuid or uuid.uuid4()
 
 
 @dataclass

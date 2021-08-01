@@ -1,6 +1,6 @@
 [
   {
-    "suid": "00000000-0000-0000-0000-000000000001",
+    "suuid": "00000000-0000-0000-0000-000000000001",
     "mode": "notes",
     "label": "help",
     "hidden": false,
@@ -8,7 +8,7 @@
     "message": null,
     "comment": "run me for the dreamfort walkthrough",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000003",
+      "luuid": "00000000-0000-0000-0000-000000000003",
       "raw_lines": [
         [
           "Welcome to the Dreamfort Walkthrough!"
@@ -107,7 +107,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000002",
+    "suuid": "00000000-0000-0000-0000-000000000002",
     "mode": "notes",
     "label": "checklist",
     "hidden": false,
@@ -115,7 +115,7 @@
     "message": null,
     "comment": "command checklist",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000005",
+      "luuid": "00000000-0000-0000-0000-000000000005",
       "raw_lines": [
         [
           "Here is the recommended order for Dreamfort commands. You can copy/paste the quickfort commands directly into the DFHack terminal. See the level walkthroughs for context and details. Also remember to read the messages the blueprints print out after you run them so you don't miss any important manual steps."
@@ -323,7 +323,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000004",
+    "suuid": "00000000-0000-0000-0000-000000000004",
     "mode": "meta",
     "label": "dig_all_underground",
     "hidden": true,
@@ -335,7 +335,7 @@
     "message": null,
     "comment": "dig industry, services, guildhall, suites, and apartments levels",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000007",
+      "luuid": "00000000-0000-0000-0000-000000000007",
       "raw_lines": [
         [
           "# Note that this blueprint will only work for the unified dreamfort.csv. It won't work for the individual .xlsx files (since #meta blueprints can't cross file boundaries)."
@@ -383,7 +383,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000006",
+    "suuid": "00000000-0000-0000-0000-000000000006",
     "mode": "ignore",
     "label": "3",
     "hidden": false,
@@ -391,7 +391,7 @@
     "message": null,
     "comment": null,
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000009",
+      "luuid": "00000000-0000-0000-0000-000000000009",
       "raw_lines": [
         [
           "Here are the minimal skills needed for essential tasks in getting Dreamfort up and running, along with suggestions for which dwarves to assign them to. You can enable additional skills as you wish. Skills with an asterisk (*) are especially worth putting points into on the embark preparation screen."
@@ -502,7 +502,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000008",
+    "suuid": "00000000-0000-0000-0000-000000000008",
     "mode": "notes",
     "label": "surface_help",
     "hidden": false,
@@ -510,7 +510,7 @@
     "message": null,
     "comment": null,
     "layer": {
-      "luid": "00000000-0000-0000-0000-00000000000b",
+      "luuid": "00000000-0000-0000-0000-00000000000b",
       "raw_lines": [
         [
           "Sets up a protected entrance to your fort in a flat area on the surface."
@@ -630,7 +630,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000000a",
+    "suuid": "00000000-0000-0000-0000-00000000000a",
     "mode": "meta",
     "label": "perimeter",
     "hidden": false,
@@ -642,7 +642,7 @@
     "message": "Run quickfort undo on this blueprint to clean up.",
     "comment": "show the eventual perimeter of the surface fort; useful for location scouting",
     "layer": {
-      "luid": "00000000-0000-0000-0000-00000000000d",
+      "luuid": "00000000-0000-0000-0000-00000000000d",
       "raw_lines": [
         [
           "walls/surface_walls"
@@ -657,7 +657,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000000c",
+    "suuid": "00000000-0000-0000-0000-00000000000c",
     "mode": "meta",
     "label": "surface1",
     "hidden": false,
@@ -669,7 +669,7 @@
     "message": "Once the central stairs is mined out deeply enough, you should start digging the industry level in a non-aquifer rock layer. You'll need the boulders from the digging to make blocks.\nIf your wagon is within the fort perimeter, deconstruct it to get it out of the way.\nEnqueue manager orders for /surface3 to get a head start on building required materials.\nOnce the marked trees are all chopped down (if any), continue with /surface2.",
     "comment": "clear trees and set up pastures",
     "layer": {
-      "luid": "00000000-0000-0000-0000-00000000000f",
+      "luuid": "00000000-0000-0000-0000-00000000000f",
       "raw_lines": [
         [
           "central_stairs/central_stairs"
@@ -690,7 +690,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000000e",
+    "suuid": "00000000-0000-0000-0000-00000000000e",
     "mode": "meta",
     "label": "surface2",
     "hidden": false,
@@ -702,7 +702,7 @@
     "message": "Once the channels are dug out and the marked trees are cleared, continue with /surface3.",
     "comment": "set up starting workshops/stockpiles, channel miasma vents, and clear more trees",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000011",
+      "luuid": "00000000-0000-0000-0000-000000000011",
       "raw_lines": [
         [
           "build_start/surface_build_start"
@@ -726,7 +726,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000010",
+    "suuid": "00000000-0000-0000-0000-000000000010",
     "mode": "meta",
     "label": "surface3",
     "hidden": false,
@@ -738,7 +738,7 @@
     "message": "Once the walls and floors have been constructed, continue with /surface4.",
     "comment": "Cover vents and protect the central stairs.",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000013",
+      "luuid": "00000000-0000-0000-0000-000000000013",
       "raw_lines": [
         [
           "cover_vents/surface_cover_vents"
@@ -753,7 +753,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000012",
+    "suuid": "00000000-0000-0000-0000-000000000012",
     "mode": "meta",
     "label": "surface4",
     "hidden": false,
@@ -765,7 +765,7 @@
     "message": "Remember to enqueue manager orders for this blueprint.\nOnce the walls and floors have been constructed, continue with /surface5. Be sure to check one z-level above the surface to ensure the roof segment above the future barracks has been finished.",
     "comment": "build walls and flooring to support upcoming buildings and furniture",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000015",
+      "luuid": "00000000-0000-0000-0000-000000000015",
       "raw_lines": [
         [
           "stairs_doors/surface_stairs_doors"
@@ -780,7 +780,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000014",
+    "suuid": "00000000-0000-0000-0000-000000000014",
     "mode": "meta",
     "label": "surface5",
     "hidden": false,
@@ -792,7 +792,7 @@
     "message": "Remember to enqueue manager orders for this blueprint.\nDisassemble the temporary trade depot in the pasture once the new one is constructed (and no merchants are using the old one).\nOnce the marked trees are cleared and at least the beehives and weapon rack have been constructed, continue with /surface6.",
     "comment": "build gates, furniture, and trade stockpile/depot",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000017",
+      "luuid": "00000000-0000-0000-0000-000000000017",
       "raw_lines": [
         [
           "place/surface_place"
@@ -813,7 +813,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000016",
+    "suuid": "00000000-0000-0000-0000-000000000016",
     "mode": "meta",
     "label": "surface6",
     "hidden": false,
@@ -825,7 +825,7 @@
     "message": "Remember to enqueue manager orders for this blueprint.\nContinue with /surface7 sometime after the walls are completed and any marked trees are chopped down, whenever you have enough dwarves to build the roof without starving other important construction tasks.",
     "comment": "configure hives and barracks, build traps and remaining walls/floors",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000019",
+      "luuid": "00000000-0000-0000-0000-000000000019",
       "raw_lines": [
         [
           "query2/surface_query2"
@@ -849,7 +849,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000018",
+    "suuid": "00000000-0000-0000-0000-000000000018",
     "mode": "meta",
     "label": "surface7",
     "hidden": false,
@@ -861,7 +861,7 @@
     "message": "Remember to enqueue manager orders for this blueprint. For extra security, you can run /surface8 at any time to extend the trap corridors.",
     "comment": "build roof",
     "layer": {
-      "luid": "00000000-0000-0000-0000-00000000001b",
+      "luuid": "00000000-0000-0000-0000-00000000001b",
       "raw_lines": [
         [
           "#<"
@@ -879,7 +879,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000001a",
+    "suuid": "00000000-0000-0000-0000-00000000001a",
     "mode": "meta",
     "label": "surface8",
     "hidden": false,
@@ -891,7 +891,7 @@
     "message": "Remember to enqueue manager orders for this blueprint.",
     "comment": "build extended trap corridors",
     "layer": {
-      "luid": "00000000-0000-0000-0000-00000000001d",
+      "luuid": "00000000-0000-0000-0000-00000000001d",
       "raw_lines": [
         [
           "corridor/surface_corridor"
@@ -906,7 +906,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000001c",
+    "suuid": "00000000-0000-0000-0000-00000000001c",
     "mode": "dig",
     "label": "central_stairs",
     "hidden": true,
@@ -919,7 +919,7 @@
     "comment": "spiral stairs that go down 20 levels",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000001f",
+        "luuid": "00000000-0000-0000-0000-00000000001f",
         "height": 3,
         "width": 3,
         "relative_z": 0,
@@ -933,7 +933,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000020",
+        "luuid": "00000000-0000-0000-0000-000000000020",
         "height": 3,
         "width": 3,
         "relative_z": 1,
@@ -947,7 +947,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000021",
+        "luuid": "00000000-0000-0000-0000-000000000021",
         "height": 3,
         "width": 3,
         "relative_z": 2,
@@ -961,7 +961,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000022",
+        "luuid": "00000000-0000-0000-0000-000000000022",
         "height": 3,
         "width": 3,
         "relative_z": 3,
@@ -975,7 +975,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000023",
+        "luuid": "00000000-0000-0000-0000-000000000023",
         "height": 3,
         "width": 3,
         "relative_z": 4,
@@ -989,7 +989,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000024",
+        "luuid": "00000000-0000-0000-0000-000000000024",
         "height": 3,
         "width": 3,
         "relative_z": 5,
@@ -1003,7 +1003,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000025",
+        "luuid": "00000000-0000-0000-0000-000000000025",
         "height": 3,
         "width": 3,
         "relative_z": 6,
@@ -1017,7 +1017,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000026",
+        "luuid": "00000000-0000-0000-0000-000000000026",
         "height": 3,
         "width": 3,
         "relative_z": 7,
@@ -1031,7 +1031,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000027",
+        "luuid": "00000000-0000-0000-0000-000000000027",
         "height": 3,
         "width": 3,
         "relative_z": 8,
@@ -1045,7 +1045,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000028",
+        "luuid": "00000000-0000-0000-0000-000000000028",
         "height": 3,
         "width": 3,
         "relative_z": 9,
@@ -1059,7 +1059,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000029",
+        "luuid": "00000000-0000-0000-0000-000000000029",
         "height": 3,
         "width": 3,
         "relative_z": 10,
@@ -1073,7 +1073,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-00000000002a",
+        "luuid": "00000000-0000-0000-0000-00000000002a",
         "height": 3,
         "width": 3,
         "relative_z": 11,
@@ -1087,7 +1087,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-00000000002b",
+        "luuid": "00000000-0000-0000-0000-00000000002b",
         "height": 3,
         "width": 3,
         "relative_z": 12,
@@ -1101,7 +1101,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-00000000002c",
+        "luuid": "00000000-0000-0000-0000-00000000002c",
         "height": 3,
         "width": 3,
         "relative_z": 13,
@@ -1115,7 +1115,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-00000000002d",
+        "luuid": "00000000-0000-0000-0000-00000000002d",
         "height": 3,
         "width": 3,
         "relative_z": 14,
@@ -1129,7 +1129,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-00000000002e",
+        "luuid": "00000000-0000-0000-0000-00000000002e",
         "height": 3,
         "width": 3,
         "relative_z": 15,
@@ -1143,7 +1143,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-00000000002f",
+        "luuid": "00000000-0000-0000-0000-00000000002f",
         "height": 3,
         "width": 3,
         "relative_z": 16,
@@ -1157,7 +1157,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000030",
+        "luuid": "00000000-0000-0000-0000-000000000030",
         "height": 3,
         "width": 3,
         "relative_z": 17,
@@ -1171,7 +1171,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000031",
+        "luuid": "00000000-0000-0000-0000-000000000031",
         "height": 3,
         "width": 3,
         "relative_z": 18,
@@ -1185,7 +1185,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000032",
+        "luuid": "00000000-0000-0000-0000-000000000032",
         "height": 3,
         "width": 3,
         "relative_z": 19,
@@ -1201,7 +1201,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000001e",
+    "suuid": "00000000-0000-0000-0000-00000000001e",
     "mode": "dig",
     "label": "surface_clear_small",
     "hidden": true,
@@ -1214,7 +1214,7 @@
     "comment": "clear trees for starting workshops and stockpiles",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000034",
+        "luuid": "00000000-0000-0000-0000-000000000034",
         "height": 29,
         "width": 31,
         "relative_z": 0,
@@ -1256,7 +1256,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000033",
+    "suuid": "00000000-0000-0000-0000-000000000033",
     "mode": "zone",
     "label": "surface_zones",
     "hidden": true,
@@ -1269,7 +1269,7 @@
     "comment": " pastures and training areas",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000036",
+        "luuid": "00000000-0000-0000-0000-000000000036",
         "height": 25,
         "width": 31,
         "relative_z": 0,
@@ -1307,7 +1307,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000035",
+    "suuid": "00000000-0000-0000-0000-000000000035",
     "mode": "query",
     "label": "surface_name_zones",
     "hidden": true,
@@ -1320,7 +1320,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000038",
+        "luuid": "00000000-0000-0000-0000-000000000038",
         "height": 1,
         "width": 1,
         "relative_z": 0,
@@ -1334,7 +1334,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000037",
+    "suuid": "00000000-0000-0000-0000-000000000037",
     "mode": "build",
     "label": "surface_build_start",
     "hidden": true,
@@ -1347,7 +1347,7 @@
     "comment": " starting workshops",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000003a",
+        "luuid": "00000000-0000-0000-0000-00000000003a",
         "height": 17,
         "width": 29,
         "relative_z": 0,
@@ -1377,7 +1377,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000039",
+    "suuid": "00000000-0000-0000-0000-000000000039",
     "mode": "place",
     "label": "surface_place_start",
     "hidden": true,
@@ -1390,7 +1390,7 @@
     "comment": " starting stockpiles",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000003c",
+        "luuid": "00000000-0000-0000-0000-00000000003c",
         "height": 10,
         "width": 31,
         "relative_z": 0,
@@ -1413,7 +1413,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000003b",
+    "suuid": "00000000-0000-0000-0000-00000000003b",
     "mode": "query",
     "label": "surface_query_start",
     "hidden": true,
@@ -1426,7 +1426,7 @@
     "comment": "config stockpiles",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000003e",
+        "luuid": "00000000-0000-0000-0000-00000000003e",
         "height": 8,
         "width": 28,
         "relative_z": 0,
@@ -1447,7 +1447,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000003d",
+    "suuid": "00000000-0000-0000-0000-00000000003d",
     "mode": "dig",
     "label": "surface_channel",
     "hidden": true,
@@ -1460,7 +1460,7 @@
     "comment": "channel miasma vents",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000040",
+        "luuid": "00000000-0000-0000-0000-000000000040",
         "height": 29,
         "width": 30,
         "relative_z": 0,
@@ -1502,7 +1502,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000003f",
+    "suuid": "00000000-0000-0000-0000-00000000003f",
     "mode": "dig",
     "label": "surface_clear",
     "hidden": true,
@@ -1515,7 +1515,7 @@
     "comment": "clear trees so the farming level can be dug without fear of generating surface holes",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000042",
+        "luuid": "00000000-0000-0000-0000-000000000042",
         "height": 32,
         "width": 35,
         "relative_z": 0,
@@ -1560,7 +1560,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000041",
+    "suuid": "00000000-0000-0000-0000-000000000041",
     "mode": "build",
     "label": "surface_cover_vents",
     "hidden": true,
@@ -1573,7 +1573,7 @@
     "comment": "cover the miasma vents",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000044",
+        "luuid": "00000000-0000-0000-0000-000000000044",
         "height": 29,
         "width": 30,
         "relative_z": 0,
@@ -1615,7 +1615,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000043",
+    "suuid": "00000000-0000-0000-0000-000000000043",
     "mode": "build",
     "label": "surface_cover_stairs",
     "hidden": true,
@@ -1628,7 +1628,7 @@
     "comment": "protect the central stairs",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000046",
+        "luuid": "00000000-0000-0000-0000-000000000046",
         "height": 22,
         "width": 22,
         "relative_z": 0,
@@ -1661,7 +1661,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000047",
+        "luuid": "00000000-0000-0000-0000-000000000047",
         "height": 22,
         "width": 22,
         "relative_z": -1,
@@ -1696,7 +1696,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000045",
+    "suuid": "00000000-0000-0000-0000-000000000045",
     "mode": "build",
     "label": "surface_stairs_doors",
     "hidden": true,
@@ -1709,7 +1709,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000049",
+        "luuid": "00000000-0000-0000-0000-000000000049",
         "height": 22,
         "width": 22,
         "relative_z": 0,
@@ -1744,7 +1744,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000048",
+    "suuid": "00000000-0000-0000-0000-000000000048",
     "mode": "build",
     "label": "surface_pre_building",
     "hidden": true,
@@ -1757,7 +1757,7 @@
     "comment": "flooring and anchoring walls for future buildings/doors",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000004b",
+        "luuid": "00000000-0000-0000-0000-00000000004b",
         "height": 29,
         "width": 33,
         "relative_z": 0,
@@ -1797,7 +1797,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-00000000004c",
+        "luuid": "00000000-0000-0000-0000-00000000004c",
         "height": 27,
         "width": 31,
         "relative_z": -1,
@@ -1837,7 +1837,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000004a",
+    "suuid": "00000000-0000-0000-0000-00000000004a",
     "mode": "place",
     "label": "surface_place",
     "hidden": true,
@@ -1850,7 +1850,7 @@
     "comment": "remaining surface stockpiles",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000004e",
+        "luuid": "00000000-0000-0000-0000-00000000004e",
         "height": 27,
         "width": 31,
         "relative_z": 0,
@@ -1890,7 +1890,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000004d",
+    "suuid": "00000000-0000-0000-0000-00000000004d",
     "mode": "build",
     "label": "surface_build",
     "hidden": true,
@@ -1903,7 +1903,7 @@
     "comment": " gates, barracks, farm area, and trade area",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000050",
+        "luuid": "00000000-0000-0000-0000-000000000050",
         "height": 32,
         "width": 33,
         "relative_z": 0,
@@ -1948,7 +1948,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000004f",
+    "suuid": "00000000-0000-0000-0000-00000000004f",
     "mode": "query",
     "label": "surface_query",
     "hidden": true,
@@ -1961,7 +1961,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000052",
+        "luuid": "00000000-0000-0000-0000-000000000052",
         "height": 25,
         "width": 23,
         "relative_z": 0,
@@ -1999,7 +1999,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000051",
+    "suuid": "00000000-0000-0000-0000-000000000051",
     "mode": "dig",
     "label": "surface_clear_large",
     "hidden": true,
@@ -2012,7 +2012,7 @@
     "comment": "clear wider area of trees",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000054",
+        "luuid": "00000000-0000-0000-0000-000000000054",
         "height": 32,
         "width": 36,
         "relative_z": 0,
@@ -2057,7 +2057,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000053",
+    "suuid": "00000000-0000-0000-0000-000000000053",
     "mode": "query",
     "label": "surface_query2",
     "hidden": true,
@@ -2070,7 +2070,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000056",
+        "luuid": "00000000-0000-0000-0000-000000000056",
         "height": 25,
         "width": 29,
         "relative_z": 0,
@@ -2108,7 +2108,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000055",
+    "suuid": "00000000-0000-0000-0000-000000000055",
     "mode": "build",
     "label": "surface_walls",
     "hidden": true,
@@ -2121,7 +2121,7 @@
     "comment": "build remaining walls",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000058",
+        "luuid": "00000000-0000-0000-0000-000000000058",
         "height": 30,
         "width": 32,
         "relative_z": 0,
@@ -2164,7 +2164,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000057",
+    "suuid": "00000000-0000-0000-0000-000000000057",
     "mode": "build",
     "label": "surface_floors",
     "hidden": true,
@@ -2177,7 +2177,7 @@
     "comment": "build remaining flooring",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000005a",
+        "luuid": "00000000-0000-0000-0000-00000000005a",
         "height": 29,
         "width": 30,
         "relative_z": 0,
@@ -2219,7 +2219,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000059",
+    "suuid": "00000000-0000-0000-0000-000000000059",
     "mode": "build",
     "label": "surface_traps",
     "hidden": true,
@@ -2232,7 +2232,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000005c",
+        "luuid": "00000000-0000-0000-0000-00000000005c",
         "height": 32,
         "width": 31,
         "relative_z": 0,
@@ -2277,7 +2277,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000005b",
+    "suuid": "00000000-0000-0000-0000-00000000005b",
     "mode": "build",
     "label": "surface_roof",
     "hidden": true,
@@ -2290,7 +2290,7 @@
     "comment": "lower half of the roof",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000005e",
+        "luuid": "00000000-0000-0000-0000-00000000005e",
         "height": 30,
         "width": 32,
         "relative_z": 0,
@@ -2333,7 +2333,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000005d",
+    "suuid": "00000000-0000-0000-0000-00000000005d",
     "mode": "build",
     "label": "surface_roof2",
     "hidden": true,
@@ -2346,7 +2346,7 @@
     "comment": "upper half of the roof",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000060",
+        "luuid": "00000000-0000-0000-0000-000000000060",
         "height": 15,
         "width": 31,
         "relative_z": 0,
@@ -2374,7 +2374,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000005f",
+    "suuid": "00000000-0000-0000-0000-00000000005f",
     "mode": "build",
     "label": "surface_corridor",
     "hidden": true,
@@ -2387,7 +2387,7 @@
     "comment": "trap hallway walls",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000062",
+        "luuid": "00000000-0000-0000-0000-000000000062",
         "height": 30,
         "width": 34,
         "relative_z": 0,
@@ -2428,7 +2428,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000063",
+        "luuid": "00000000-0000-0000-0000-000000000063",
         "height": 29,
         "width": 33,
         "relative_z": -1,
@@ -2470,7 +2470,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000061",
+    "suuid": "00000000-0000-0000-0000-000000000061",
     "mode": "build",
     "label": "surface_corridor_traps",
     "hidden": true,
@@ -2483,7 +2483,7 @@
     "comment": "barracks, longer trap hallways, and outer levers/gates",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000065",
+        "luuid": "00000000-0000-0000-0000-000000000065",
         "height": 28,
         "width": 33,
         "relative_z": 0,
@@ -2524,7 +2524,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000064",
+    "suuid": "00000000-0000-0000-0000-000000000064",
     "mode": "query",
     "label": "surface_query_corridor",
     "hidden": true,
@@ -2537,7 +2537,7 @@
     "comment": "(Remember to connect the levers to the new external trap gates.) configure barracks and name outer levers/gates",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000067",
+        "luuid": "00000000-0000-0000-0000-000000000067",
         "height": 1,
         "width": 1,
         "relative_z": 0,
@@ -2551,7 +2551,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000066",
+    "suuid": "00000000-0000-0000-0000-000000000066",
     "mode": "notes",
     "label": "farming_help",
     "hidden": false,
@@ -2559,7 +2559,7 @@
     "message": null,
     "comment": null,
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000069",
+      "luuid": "00000000-0000-0000-0000-000000000069",
       "raw_lines": [
         [
           "Sets up farming, food storage, and related industries. Also provides post-embark necessities that can later be disassembed."
@@ -2676,7 +2676,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000068",
+    "suuid": "00000000-0000-0000-0000-000000000068",
     "mode": "dig",
     "label": "farming1",
     "hidden": false,
@@ -2689,7 +2689,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000006b",
+        "luuid": "00000000-0000-0000-0000-00000000006b",
         "height": 26,
         "width": 29,
         "relative_z": 0,
@@ -2728,7 +2728,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000006a",
+    "suuid": "00000000-0000-0000-0000-00000000006a",
     "mode": "meta",
     "label": "farming2",
     "hidden": false,
@@ -2740,7 +2740,7 @@
     "message": "Once furniture has been placed, continue with /farming3.",
     "comment": "workshops, stockpiles, and important furniture",
     "layer": {
-      "luid": "00000000-0000-0000-0000-00000000006d",
+      "luuid": "00000000-0000-0000-0000-00000000006d",
       "raw_lines": [
         [
           "build/farming_build"
@@ -2758,7 +2758,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000006c",
+    "suuid": "00000000-0000-0000-0000-00000000006c",
     "mode": "meta",
     "label": "farming3",
     "hidden": false,
@@ -2770,7 +2770,7 @@
     "message": null,
     "comment": "configure rooms and build farm plots and more furniture",
     "layer": {
-      "luid": "00000000-0000-0000-0000-00000000006f",
+      "luuid": "00000000-0000-0000-0000-00000000006f",
       "raw_lines": [
         [
           "query_rooms/farming_rooms"
@@ -2785,7 +2785,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000006e",
+    "suuid": "00000000-0000-0000-0000-00000000006e",
     "mode": "meta",
     "label": "farming4",
     "hidden": false,
@@ -2797,7 +2797,7 @@
     "message": null,
     "comment": "configure farm plots and build remaining furniture",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000071",
+      "luuid": "00000000-0000-0000-0000-000000000071",
       "raw_lines": [
         [
           "query_plots/farming_query_plots"
@@ -2809,7 +2809,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000070",
+    "suuid": "00000000-0000-0000-0000-000000000070",
     "mode": "build",
     "label": "farming_build",
     "hidden": true,
@@ -2822,7 +2822,7 @@
     "comment": "workshops and important furniture",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000073",
+        "luuid": "00000000-0000-0000-0000-000000000073",
         "height": 27,
         "width": 27,
         "relative_z": 0,
@@ -2862,7 +2862,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000072",
+    "suuid": "00000000-0000-0000-0000-000000000072",
     "mode": "place",
     "label": "farming_place",
     "hidden": true,
@@ -2875,7 +2875,7 @@
     "comment": "stockpiles",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000075",
+        "luuid": "00000000-0000-0000-0000-000000000075",
         "height": 28,
         "width": 29,
         "relative_z": 0,
@@ -2916,7 +2916,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000074",
+    "suuid": "00000000-0000-0000-0000-000000000074",
     "mode": "query",
     "label": "farming_query_stockpiles",
     "hidden": true,
@@ -2929,7 +2929,7 @@
     "comment": " config stockpiles",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000077",
+        "luuid": "00000000-0000-0000-0000-000000000077",
         "height": 26,
         "width": 23,
         "relative_z": 0,
@@ -2968,7 +2968,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000076",
+    "suuid": "00000000-0000-0000-0000-000000000076",
     "mode": "query",
     "label": "farming_rooms",
     "hidden": true,
@@ -2981,7 +2981,7 @@
     "comment": " configure rooms",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000079",
+        "luuid": "00000000-0000-0000-0000-000000000079",
         "height": 10,
         "width": 24,
         "relative_z": 0,
@@ -3004,7 +3004,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000078",
+    "suuid": "00000000-0000-0000-0000-000000000078",
     "mode": "build",
     "label": "farming_build2",
     "hidden": true,
@@ -3017,7 +3017,7 @@
     "comment": "farm plots, remaining furniture, and important doors",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000007b",
+        "luuid": "00000000-0000-0000-0000-00000000007b",
         "height": 23,
         "width": 24,
         "relative_z": 0,
@@ -3053,7 +3053,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000007a",
+    "suuid": "00000000-0000-0000-0000-00000000007a",
     "mode": "query",
     "label": "farming_query_plots",
     "hidden": true,
@@ -3066,7 +3066,7 @@
     "comment": "configure farm plots for seasonal fertilization",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000007d",
+        "luuid": "00000000-0000-0000-0000-00000000007d",
         "height": 11,
         "width": 14,
         "relative_z": 0,
@@ -3090,7 +3090,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000007c",
+    "suuid": "00000000-0000-0000-0000-00000000007c",
     "mode": "build",
     "label": "farming_build3",
     "hidden": true,
@@ -3103,7 +3103,7 @@
     "comment": "remaining doors",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000007f",
+        "luuid": "00000000-0000-0000-0000-00000000007f",
         "height": 21,
         "width": 27,
         "relative_z": 0,
@@ -3137,7 +3137,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000007e",
+    "suuid": "00000000-0000-0000-0000-00000000007e",
     "mode": "notes",
     "label": "industry_help",
     "hidden": false,
@@ -3145,7 +3145,7 @@
     "message": null,
     "comment": null,
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000081",
+      "luuid": "00000000-0000-0000-0000-000000000081",
       "raw_lines": [
         [
           "Sets up workshops for all non-farming industries"
@@ -3298,7 +3298,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000080",
+    "suuid": "00000000-0000-0000-0000-000000000080",
     "mode": "dig",
     "label": "industry1",
     "hidden": false,
@@ -3311,7 +3311,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000083",
+        "luuid": "00000000-0000-0000-0000-000000000083",
         "height": 33,
         "width": 33,
         "relative_z": 0,
@@ -3357,7 +3357,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000082",
+    "suuid": "00000000-0000-0000-0000-000000000082",
     "mode": "meta",
     "label": "industry2",
     "hidden": false,
@@ -3369,7 +3369,7 @@
     "message": null,
     "comment": "build workshops and stockpiles, configure stockpiles",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000085",
+      "luuid": "00000000-0000-0000-0000-000000000085",
       "raw_lines": [
         [
           "build/industry_build"
@@ -3384,7 +3384,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000084",
+    "suuid": "00000000-0000-0000-0000-000000000084",
     "mode": "build",
     "label": "industry_build",
     "hidden": true,
@@ -3397,7 +3397,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000087",
+        "luuid": "00000000-0000-0000-0000-000000000087",
         "height": 31,
         "width": 31,
         "relative_z": 0,
@@ -3441,7 +3441,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000086",
+    "suuid": "00000000-0000-0000-0000-000000000086",
     "mode": "place",
     "label": "industry_place",
     "hidden": true,
@@ -3454,7 +3454,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-000000000089",
+        "luuid": "00000000-0000-0000-0000-000000000089",
         "height": 33,
         "width": 31,
         "relative_z": 0,
@@ -3500,7 +3500,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000088",
+    "suuid": "00000000-0000-0000-0000-000000000088",
     "mode": "query",
     "label": "industry_query",
     "hidden": true,
@@ -3513,7 +3513,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000008b",
+        "luuid": "00000000-0000-0000-0000-00000000008b",
         "height": 33,
         "width": 25,
         "relative_z": 0,
@@ -3559,7 +3559,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000008a",
+    "suuid": "00000000-0000-0000-0000-00000000008a",
     "mode": "notes",
     "label": "services_help",
     "hidden": false,
@@ -3567,7 +3567,7 @@
     "message": null,
     "comment": null,
     "layer": {
-      "luid": "00000000-0000-0000-0000-00000000008d",
+      "luuid": "00000000-0000-0000-0000-00000000008d",
       "raw_lines": [
         [
           "Sets up public services (dining, hospital, etc.)"
@@ -3651,7 +3651,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000008c",
+    "suuid": "00000000-0000-0000-0000-00000000008c",
     "mode": "dig",
     "label": "services1",
     "hidden": false,
@@ -3664,7 +3664,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000008f",
+        "luuid": "00000000-0000-0000-0000-00000000008f",
         "height": 31,
         "width": 37,
         "relative_z": 0,
@@ -3706,7 +3706,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000090",
+        "luuid": "00000000-0000-0000-0000-000000000090",
         "height": 26,
         "width": 34,
         "relative_z": 1,
@@ -3743,7 +3743,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000091",
+        "luuid": "00000000-0000-0000-0000-000000000091",
         "height": 24,
         "width": 34,
         "relative_z": 2,
@@ -3778,7 +3778,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-000000000092",
+        "luuid": "00000000-0000-0000-0000-000000000092",
         "height": 24,
         "width": 33,
         "relative_z": 3,
@@ -3815,7 +3815,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000008e",
+    "suuid": "00000000-0000-0000-0000-00000000008e",
     "mode": "meta",
     "label": "services2",
     "hidden": false,
@@ -3827,7 +3827,7 @@
     "message": "Once furniture has been placed, continue with /services3.",
     "comment": "dining hall anchors, stockpiles, hospital, garbage dump",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000094",
+      "luuid": "00000000-0000-0000-0000-000000000094",
       "raw_lines": [
         [
           "build/services_build"
@@ -3851,7 +3851,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000093",
+    "suuid": "00000000-0000-0000-0000-000000000093",
     "mode": "meta",
     "label": "services3",
     "hidden": false,
@@ -3863,7 +3863,7 @@
     "message": null,
     "comment": "configure dining room, build dining hall and hospital furniture",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000096",
+      "luuid": "00000000-0000-0000-0000-000000000096",
       "raw_lines": [
         [
           "query_dining/services_query_dining"
@@ -3878,7 +3878,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000095",
+    "suuid": "00000000-0000-0000-0000-000000000095",
     "mode": "meta",
     "label": "services4",
     "hidden": false,
@@ -3890,7 +3890,7 @@
     "message": null,
     "comment": "complete jail and build decorative furniture",
     "layer": {
-      "luid": "00000000-0000-0000-0000-000000000098",
+      "luuid": "00000000-0000-0000-0000-000000000098",
       "raw_lines": [
         [
           "build3/services_build3"
@@ -3905,7 +3905,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000097",
+    "suuid": "00000000-0000-0000-0000-000000000097",
     "mode": "build",
     "label": "services_build",
     "hidden": true,
@@ -3918,7 +3918,7 @@
     "comment": "build basic hospital and dining room anchor",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000009a",
+        "luuid": "00000000-0000-0000-0000-00000000009a",
         "height": 25,
         "width": 37,
         "relative_z": 0,
@@ -3956,7 +3956,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-000000000099",
+    "suuid": "00000000-0000-0000-0000-000000000099",
     "mode": "place",
     "label": "services_place",
     "hidden": true,
@@ -3969,7 +3969,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000009c",
+        "luuid": "00000000-0000-0000-0000-00000000009c",
         "height": 31,
         "width": 26,
         "relative_z": 0,
@@ -4013,7 +4013,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000009b",
+    "suuid": "00000000-0000-0000-0000-00000000009b",
     "mode": "zone",
     "label": "services_zones",
     "hidden": true,
@@ -4026,7 +4026,7 @@
     "comment": "hospital and garbage dump",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-00000000009e",
+        "luuid": "00000000-0000-0000-0000-00000000009e",
         "height": 27,
         "width": 37,
         "relative_z": 0,
@@ -4066,7 +4066,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000009d",
+    "suuid": "00000000-0000-0000-0000-00000000009d",
     "mode": "query",
     "label": "services_name_zones",
     "hidden": true,
@@ -4079,7 +4079,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000a0",
+        "luuid": "00000000-0000-0000-0000-0000000000a0",
         "height": 1,
         "width": 1,
         "relative_z": 0,
@@ -4093,7 +4093,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-00000000009f",
+    "suuid": "00000000-0000-0000-0000-00000000009f",
     "mode": "query",
     "label": "services_query_stockpiles",
     "hidden": true,
@@ -4106,7 +4106,7 @@
     "comment": " configure stockpiles",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000a2",
+        "luuid": "00000000-0000-0000-0000-0000000000a2",
         "height": 27,
         "width": 21,
         "relative_z": 0,
@@ -4146,7 +4146,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000a1",
+    "suuid": "00000000-0000-0000-0000-0000000000a1",
     "mode": "query",
     "label": "services_query_dining",
     "hidden": false,
@@ -4159,7 +4159,7 @@
     "comment": "set up dining room and barracks",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000a4",
+        "luuid": "00000000-0000-0000-0000-0000000000a4",
         "height": 16,
         "width": 26,
         "relative_z": 0,
@@ -4188,7 +4188,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000a3",
+    "suuid": "00000000-0000-0000-0000-0000000000a3",
     "mode": "build",
     "label": "services_build2",
     "hidden": true,
@@ -4201,7 +4201,7 @@
     "comment": "build rest of hospital and dining room, doors, prep for jail",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000a6",
+        "luuid": "00000000-0000-0000-0000-0000000000a6",
         "height": 27,
         "width": 37,
         "relative_z": 0,
@@ -4239,7 +4239,7 @@
         "encoding": "csv:qf"
       },
       {
-        "luid": "00000000-0000-0000-0000-0000000000a7",
+        "luuid": "00000000-0000-0000-0000-0000000000a7",
         "height": 25,
         "width": 33,
         "relative_z": 1,
@@ -4277,7 +4277,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000a5",
+    "suuid": "00000000-0000-0000-0000-0000000000a5",
     "mode": "build",
     "label": "services_build3",
     "hidden": true,
@@ -4290,7 +4290,7 @@
     "comment": "jail, statues",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000a9",
+        "luuid": "00000000-0000-0000-0000-0000000000a9",
         "height": 27,
         "width": 32,
         "relative_z": 0,
@@ -4330,7 +4330,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000a8",
+    "suuid": "00000000-0000-0000-0000-0000000000a8",
     "mode": "place",
     "label": "services_place_jail",
     "hidden": true,
@@ -4343,7 +4343,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000ab",
+        "luuid": "00000000-0000-0000-0000-0000000000ab",
         "height": 13,
         "width": 27,
         "relative_z": 0,
@@ -4369,7 +4369,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000aa",
+    "suuid": "00000000-0000-0000-0000-0000000000aa",
     "mode": "query",
     "label": "services_query_jail",
     "hidden": true,
@@ -4382,7 +4382,7 @@
     "comment": "set up barracks and jail",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000ad",
+        "luuid": "00000000-0000-0000-0000-0000000000ad",
         "height": 1,
         "width": 1,
         "relative_z": 0,
@@ -4396,7 +4396,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000ac",
+    "suuid": "00000000-0000-0000-0000-0000000000ac",
     "mode": "notes",
     "label": "guildhall_help",
     "hidden": false,
@@ -4404,7 +4404,7 @@
     "message": null,
     "comment": null,
     "layer": {
-      "luid": "00000000-0000-0000-0000-0000000000af",
+      "luuid": "00000000-0000-0000-0000-0000000000af",
       "raw_lines": [
         [
           "Eight 7x7 rooms for guildhalls, temples, libraries, etc."
@@ -4443,7 +4443,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000ae",
+    "suuid": "00000000-0000-0000-0000-0000000000ae",
     "mode": "dig",
     "label": "guildhall1",
     "hidden": false,
@@ -4456,7 +4456,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000b1",
+        "luuid": "00000000-0000-0000-0000-0000000000b1",
         "height": 27,
         "width": 27,
         "relative_z": 0,
@@ -4496,7 +4496,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000b0",
+    "suuid": "00000000-0000-0000-0000-0000000000b0",
     "mode": "build",
     "label": "guildhall2",
     "hidden": false,
@@ -4509,7 +4509,7 @@
     "comment": "build basic furniture",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000b3",
+        "luuid": "00000000-0000-0000-0000-0000000000b3",
         "height": 22,
         "width": 22,
         "relative_z": 0,
@@ -4544,7 +4544,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000b2",
+    "suuid": "00000000-0000-0000-0000-0000000000b2",
     "mode": "notes",
     "label": "beds_help",
     "hidden": false,
@@ -4552,7 +4552,7 @@
     "message": null,
     "comment": null,
     "layer": {
-      "luid": "00000000-0000-0000-0000-0000000000b5",
+      "luuid": "00000000-0000-0000-0000-0000000000b5",
       "raw_lines": [
         [
           "Suites for nobles and apartments for the teeming masses"
@@ -4615,7 +4615,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000b4",
+    "suuid": "00000000-0000-0000-0000-0000000000b4",
     "mode": "dig",
     "label": "suites1",
     "hidden": false,
@@ -4628,7 +4628,7 @@
     "comment": "noble suites",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000b7",
+        "luuid": "00000000-0000-0000-0000-0000000000b7",
         "height": 34,
         "width": 34,
         "relative_z": 0,
@@ -4675,7 +4675,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000b6",
+    "suuid": "00000000-0000-0000-0000-0000000000b6",
     "mode": "build",
     "label": "suites2",
     "hidden": false,
@@ -4688,7 +4688,7 @@
     "comment": null,
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000b9",
+        "luuid": "00000000-0000-0000-0000-0000000000b9",
         "height": 32,
         "width": 32,
         "relative_z": 0,
@@ -4733,7 +4733,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000b8",
+    "suuid": "00000000-0000-0000-0000-0000000000b8",
     "mode": "meta",
     "label": "apartments1_stack",
     "hidden": false,
@@ -4745,7 +4745,7 @@
     "message": null,
     "comment": "digs 6 layers of apartments - enough for 200 dwarves",
     "layer": {
-      "luid": "00000000-0000-0000-0000-0000000000bb",
+      "luuid": "00000000-0000-0000-0000-0000000000bb",
       "raw_lines": [
         [
           "/apartments1"
@@ -4785,7 +4785,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000ba",
+    "suuid": "00000000-0000-0000-0000-0000000000ba",
     "mode": "dig",
     "label": "apartments1",
     "hidden": false,
@@ -4798,7 +4798,7 @@
     "comment": "apartment complex",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000bd",
+        "luuid": "00000000-0000-0000-0000-0000000000bd",
         "height": 34,
         "width": 34,
         "relative_z": 0,
@@ -4845,7 +4845,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000bc",
+    "suuid": "00000000-0000-0000-0000-0000000000bc",
     "mode": "build",
     "label": "apartments2",
     "hidden": false,
@@ -4858,7 +4858,7 @@
     "comment": "build beds",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000bf",
+        "luuid": "00000000-0000-0000-0000-0000000000bf",
         "height": 30,
         "width": 30,
         "relative_z": 0,
@@ -4901,7 +4901,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000be",
+    "suuid": "00000000-0000-0000-0000-0000000000be",
     "mode": "meta",
     "label": "apartments3",
     "hidden": false,
@@ -4913,7 +4913,7 @@
     "message": null,
     "comment": "configure rooms and build remaining furniture",
     "layer": {
-      "luid": "00000000-0000-0000-0000-0000000000c1",
+      "luuid": "00000000-0000-0000-0000-0000000000c1",
       "raw_lines": [
         [
           "query_apartments/apartments_rooms"
@@ -4925,7 +4925,7 @@
     }
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000c0",
+    "suuid": "00000000-0000-0000-0000-0000000000c0",
     "mode": "query",
     "label": "apartments_rooms",
     "hidden": true,
@@ -4938,7 +4938,7 @@
     "comment": "configure rooms",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000c3",
+        "luuid": "00000000-0000-0000-0000-0000000000c3",
         "height": 30,
         "width": 30,
         "relative_z": 0,
@@ -4981,7 +4981,7 @@
     ]
   },
   {
-    "suid": "00000000-0000-0000-0000-0000000000c2",
+    "suuid": "00000000-0000-0000-0000-0000000000c2",
     "mode": "build",
     "label": "apartments_build2",
     "hidden": true,
@@ -4994,7 +4994,7 @@
     "comment": " build remaining furniture",
     "layers": [
       {
-        "luid": "00000000-0000-0000-0000-0000000000c4",
+        "luuid": "00000000-0000-0000-0000-0000000000c4",
         "height": 32,
         "width": 32,
         "relative_z": 0,
