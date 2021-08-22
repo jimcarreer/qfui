@@ -3,27 +3,29 @@ import math
 
 from typing import Optional, Generator, Tuple, List
 
-from PySide6.QtCore import QRectF, Slot, QRect, QLineF
-from PySide6.QtGui import QPainter, QMouseEvent, QPen, Qt, QBrush, QColor
+from PySide6.QtCore import QRectF, Slot, QRect, QLineF, QPoint
+from PySide6.QtGui import QPainter, QMouseEvent, QPen, Qt, QBrush
 from PySide6.QtWidgets import (
     QGraphicsItem, QGraphicsView, QGraphicsScene, QStyleOptionGraphicsItem, QWidget, QGraphicsSceneMouseEvent,
-    QGraphicsItemGroup,
 )
 
 from qfui.controller.messages import ControllerInterface
+from qfui.models.enums import Designations
+from qfui import sprites
 
-CELL_PX_SIZE = 20
+CELL_PX_SIZE = 16
 CELL_BORDER_PX_SIZE = 1
 
 
 class DesignationCell(QGraphicsItem):
     QT_TYPE = QGraphicsItem.UserType + 1
 
-    def __init__(self, cell_x: int, cell_y: int):
+    def __init__(self, cell_x: int, cell_y: int, designation: Designations):
         super().__init__()
+        self._designation = designation
         self._cell_x = cell_x
         self._cell_y = cell_y
-        self._color = QColor(255, 0, 0, 255)
+        self._cell_sprint = sprites.lookup_designation(designation)
 
     def type(self) -> int:
         return DesignationCell.QT_TYPE
@@ -37,7 +39,10 @@ class DesignationCell(QGraphicsItem):
 
     def paint(self, painter: QPainter, option: QStyleOptionGraphicsItem, widget: Optional[QWidget] = ...):
         rect = self.boundingRect()
-        painter.fillRect(rect, self._color)
+        painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_SourceIn)
+        painter.fillRect(rect, self._cell_sprint.color)
+        painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_Overlay)
+        painter.drawImage(QPoint(rect.x(), rect.y()), self._cell_sprint.img)
 
 
 class GridLayerItem(QGraphicsItem):
@@ -120,7 +125,7 @@ class LayerItem(GridLayerItem):
         cell: Optional[DesignationCell] = self._cells[x][y]
         if cell is None:
             print(f'Setting cell {(x,y)}')
-            self._cells[x][y] = DesignationCell(x, y)
+            self._cells[x][y] = DesignationCell(x, y, Designations.MINE)
         else:
             print(f'(Unsetting cell {(x,y)}')
             self._cells[x][y] = None
@@ -140,7 +145,7 @@ class GridScene(QGraphicsScene):
         pos = event.scenePos()
         x = int(math.floor(pos.x() / CELL_PX_SIZE))
         y = int(math.floor(pos.y() / CELL_PX_SIZE))
-        print(f"{x}, {y}")
+        print(f"Mouse click: {x}, {y}")
 
     def drawForeground(self, painter: QPainter, rect: QRect) -> None:
         painter.save()
@@ -205,7 +210,7 @@ class LayerViewer(QGraphicsView):
             layer_item = LayerItem(layer.width, layer.height)
             # TODO: CLean this up / init from Layer
             for (x, y), cell in layer.walk(lambda i, j, c: c is not None):
-                layer_item._cells[x][y] = DesignationCell(x, y)
+                layer_item._cells[x][y] = DesignationCell(x, y, cell.designation)
             start = controller.layer_start_position(idx)
             real_x = start.x * CELL_PX_SIZE
             real_y = start.y * CELL_PX_SIZE

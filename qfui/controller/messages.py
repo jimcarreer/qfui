@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod, ABCMeta
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 from PySide6.QtCore import QObject
 
 from qfui.models.layers import GridLayer
 from qfui.models.project import Project, SectionLayerIndex
-from qfui.models.sections import Section
+from qfui.models.sections import Section, SectionStart
 from qfui.utils import QABCMeta
 
 
@@ -28,7 +28,7 @@ class ControllerInterface(ABC, QObject, metaclass=QABCMeta):
 
     @property
     @abstractmethod
-    def visible_layers(self) -> List[SectionLayerIndex]:
+    def visible_layers(self) -> Dict[SectionLayerIndex, GridLayer]:
         pass
 
     @abstractmethod
@@ -45,4 +45,8 @@ class ControllerInterface(ABC, QObject, metaclass=QABCMeta):
 
     @abstractmethod
     def grid_layer(self, idx: SectionLayerIndex) -> Optional[GridLayer]:
+        pass
+
+    @abstractmethod
+    def layer_start_position(self, idx: SectionLayerIndex) -> Optional[SectionStart]:
         pass

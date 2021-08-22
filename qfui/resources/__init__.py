@@ -3,7 +3,7 @@ import importlib.resources
 
 from PySide6 import QtCore
 
-__RESOURCE_DIRS__ = ["icons"]
+__RESOURCE_DIRS__ = ["icons", "sprites"]
 
 
 def initialize():
