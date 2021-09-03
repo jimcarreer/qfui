@@ -82,7 +82,7 @@ class DesignationCellParser(CellParser, ExpandingCellParser):
         width = parsed.get("width", 1)
         height = parsed.get("height", 1)
         priority = int(matches.group("priority") or 4)
-        designation = Designations.from_value(designation)
+        designation = Designations.from_value(designation) or Designations.MINE
         for x, y, cell_kwargs in self._expand_kwargs(raw_cell, layer_x, layer_y, width, height):
             cell_kwargs["priority"] = int(priority)
             cell_kwargs["designation"] = designation

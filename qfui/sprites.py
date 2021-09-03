@@ -1,9 +1,12 @@
+import logging
 from dataclasses import dataclass
 
 from PySide6.QtGui import QImage, QColor
 
 from qfui.models.enums import Designations
 
+
+__LOGGER__ = logging.getLogger(__name__)
 __LOOKUP__ = {}
 __SPRITE_SIZE__ = 16
 __SHEET_WIDTH__ = 256
@@ -15,6 +18,7 @@ __DESIGNATION_SPRITES__ = {
     Designations.UP_DOWN_STAIR: (8, 5),
     Designations.UP_STAIR: (12, 3),
     Designations.DOWN_STAIR: (14, 3),
+    Designations.REMOVE_RAMPS: (14, 1),
 }
 
 __DESIGNATION_COLORS__ = {
@@ -22,6 +26,7 @@ __DESIGNATION_COLORS__ = {
     Designations.UP_DOWN_STAIR: QColor(139, 69, 19),
     Designations.UP_STAIR: QColor(139, 69, 19),
     Designations.DOWN_STAIR: QColor(139, 69, 19),
+    Designations.REMOVE_RAMPS: QColor(139, 69, 19),
 }
 
 __FALLBACK_SPRITE__ = (0, 0)
@@ -51,7 +56,12 @@ def initialize(sheet: QImage):
 
 
 def lookup_designation(designation: Designations) -> CellSprite:
-    global __LOOKUP__, __FALLBACK_SPRITE__, __FALLBACK_COLOR__, __DESIGNATION_SPRITES__, __DESIGNATION_COLORS__
+    global __LOGGER__, __LOOKUP__, __FALLBACK_SPRITE__, __FALLBACK_COLOR__, \
+           __DESIGNATION_SPRITES__, __DESIGNATION_COLORS__
     color = __DESIGNATION_COLORS__.get(designation, __FALLBACK_COLOR__)
     sprite = __DESIGNATION_SPRITES__.get(designation, __FALLBACK_SPRITE__)
+    if designation and (color == __FALLBACK_COLOR__ or sprite == __FALLBACK_SPRITE__):
+        __LOGGER__.debug(f'Designation {designation.name} ({designation}) used a fallback color or sprite')
+    elif designation is None:
+        __LOGGER__.debug(f'Got empty designation')
     return CellSprite(img=__LOOKUP__[sprite], color=color)
