@@ -54,4 +54,4 @@ def lookup_designation(designation: Designations) -> CellSprite:
     global __LOOKUP__, __FALLBACK_SPRITE__, __FALLBACK_COLOR__, __DESIGNATION_SPRITES__, __DESIGNATION_COLORS__
     color = __DESIGNATION_COLORS__.get(designation, __FALLBACK_COLOR__)
     sprite = __DESIGNATION_SPRITES__.get(designation, __FALLBACK_SPRITE__)
-    return CellSprite(sprite, color)
+    return CellSprite(img=__LOOKUP__[sprite], color=color)

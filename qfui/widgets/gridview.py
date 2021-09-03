@@ -25,7 +25,7 @@ class DesignationCell(QGraphicsItem):
         self._designation = designation
         self._cell_x = cell_x
         self._cell_y = cell_y
-        self._cell_sprint = sprites.lookup_designation(designation)
+        self._cell_sprite = sprites.lookup_designation(designation)
 
     def type(self) -> int:
         return DesignationCell.QT_TYPE
@@ -40,9 +40,9 @@ class DesignationCell(QGraphicsItem):
     def paint(self, painter: QPainter, option: QStyleOptionGraphicsItem, widget: Optional[QWidget] = ...):
         rect = self.boundingRect()
         painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_SourceIn)
-        painter.fillRect(rect, self._cell_sprint.color)
+        painter.fillRect(rect, self._cell_sprite.color)
         painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_Overlay)
-        painter.drawImage(QPoint(rect.x(), rect.y()), self._cell_sprint.img)
+        painter.drawImage(QPoint(rect.x(), rect.y()), self._cell_sprite.img)
 
 
 class GridLayerItem(QGraphicsItem):
