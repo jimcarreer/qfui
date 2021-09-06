@@ -39,10 +39,7 @@ class DesignationCell(QGraphicsItem):
 
     def paint(self, painter: QPainter, option: QStyleOptionGraphicsItem, widget: Optional[QWidget] = ...):
         rect = self.boundingRect()
-        painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_SourceIn)
-        painter.fillRect(rect, self._cell_sprite.color)
-        painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_Overlay)
-        painter.drawImage(QPoint(rect.x(), rect.y()), self._cell_sprite.img)
+        painter.drawImage(QPoint(rect.x(), rect.y()), self._cell_sprite.image)
 
 
 class GridLayerItem(QGraphicsItem):
