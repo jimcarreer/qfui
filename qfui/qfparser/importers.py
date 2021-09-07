@@ -34,7 +34,7 @@ class CSVImporter(Importer):
             if new_parser is None:
                 raw_section_data.append(row)
             if line_no == 0 and new_parser is None:
-                section = GridSection(SectionModes.DIG, f"{len(parsed_sections) + 1}")
+                section = GridSection(mode=SectionModes.DIG, label=f"{len(parsed_sections) + 1}")
                 new_parser = SectionParser.parser_for(section)
                 section_line_no = line_no
             if current_parser is None:
